@@ -1,0 +1,163 @@
+@charset "utf-8";
+/* ===================================================================
+
+Phiten IP Salon 予約管理システム｜管理ページTOP用CSS
+※SASSで作成しています。必ず.scssファイルを編集して下さい。
+
+=================================================================== */
+p.date {
+  width: 100%;
+  margin: 0;
+  padding: 10px 0 0 20px;
+  font-size: 16px;
+  font-size: 1.6rem;
+  text-align: left;
+  font-weight: bold;
+  line-height: 180%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#left_index {
+  width: 40%;
+  margin: 10px 20px 20px 50px;
+  float: left;
+}
+#left_index .newsBox {
+  margin: 0 10px 20px 10px;
+  padding: 15px 15px 25px 15px;
+  background-color: #fff;
+  border: 1px solid #cecece;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+}
+#left_index .newsBox p {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-size: 1.3rem;
+  line-height: 150%;
+}
+#left_index .newsBox .date {
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+#left_index .newsBox h3 {
+  margin: 0;
+  padding-bottom: 5px;
+  font-size: 14px;
+  font-size: 1.4rem;
+  border-bottom: 1px dotted #ccc;
+}
+#left_index .newsBox .body {
+  margin: 15px;
+}
+
+#right {
+  width: 40%;
+  float: left;
+  margin: 10px 0 20px 20px;
+}
+#right table {
+  width: 95.5%;
+  margin: 0 10px 20px 10px;
+  padding: 15px 15px 25px 15px;
+  background-color: #fff;
+  border: 1px solid #cecece;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+}
+#right table th, #right table td {
+  width: 40%;
+  padding: 10px 15px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  text-indent: 1em;
+  text-align: left;
+  background-color: #f6f6f6;
+  border: 1px solid #cccccc;
+}
+#right table .header {
+  text-indent: 0;
+}
+#right table td {
+  width: 60%;
+  background-color: #fff;
+  text-indent: 0;
+}
+
+.title_index {
+  width: 100%;
+  height: 35px;
+  position: relative;
+  margin-bottom: 30px;
+  padding: 0 8px;
+  color: #fff;
+  background-color: #6588c2;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.title_index h2 {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.title_index span {
+  float: right;
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-weight: normal;
+  padding-top: 2px;
+}
+.title_index .icon-status, .title_index .icon-news {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  margin: 0 3px 0 0;
+  padding: 0 5px 0 0;
+  float: left;
+  font-size: 22px;
+  font-size: 2.2rem;
+  color: #fff;
+}
+.title_index .icon-news {
+  font-size: 21px;
+  font-size: 2.1rem;
+  padding: 1px 5px 0 0;
+}
+.title_index:after {
+  top: 100%;
+  left: 25%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(213, 0, 0, 0);
+  border-top-color: #6588c2;
+  border-width: 8px;
+  margin-left: -8px;
+}

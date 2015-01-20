@@ -1,0 +1,523 @@
+@charset "utf-8";
+/* ===================================================================
+
+Phiten IP Salon 予約管理システム｜申し込み・グループ編集用CSS
+※SASSで作成しています。必ず.scssファイルを編集して下さい。
+
+=================================================================== */
+/* ===================================================================
+グループ編集ページ
+=================================================================== */
+#left {
+  width: 40%;
+  margin: 30px 20px 20px 50px;
+  float: left;
+}
+#left p.date, #left #salon p.time, #salon #left p.time {
+  width: 100%;
+  margin: 0 0 20px 0;
+  padding: 0 0 0 10px;
+  font-size: 16px;
+  font-size: 1.6rem;
+  text-align: left;
+  font-weight: bold;
+  line-height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#left table {
+  width: 100%;
+  margin: 0 10px 30px 10px;
+  padding: 15px 15px 25px 15px;
+  background-color: #fff;
+  border-collapse: collapse;
+  border: 1px solid #cecece;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+}
+#left table th, #left table td {
+  border: 1px solid #cccccc;
+  padding: 10px;
+  font-size: 13px;
+  font-size: 1.3rem;
+}
+#left table th {
+  width: 110px;
+  background-color: #f6f6f6;
+  text-align: left;
+}
+#left table th .icon-member, #left table th .icon-group, #left table th .icon-salon02, #left table th .icon-event, #left table th .icon-coupon, #left table th .icon-edit {
+  float: left;
+  margin-right: 6px;
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+#left table th .icon-group, #left table th div.title .icon-edit, div.title #left table th .icon-edit {
+  font-size: 18px;
+  font-size: 1.8rem;
+}
+#left table th .icon-salon02, #left table th .icon-event, #left table th .icon-coupon, #left table th .icon-edit {
+  font-size: 22px;
+  font-size: 2.2rem;
+  line-height: 130%;
+}
+#left table th a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+#left table th a .icon-slide {
+  margin-top: -22px;
+  float: right;
+  font-size: 18px;
+  font-size: 1.8rem;
+  line-height: 100%;
+}
+#left table th h2 {
+  font-size: 13px;
+  font-size: 1.3rem;
+  line-height: 210%;
+}
+#left table td .info {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#left table td .info .name {
+  margin-bottom: 5px;
+  padding: 0 0 5px 10px;
+  font-size: 16px;
+  font-size: 1.6rem;
+  border-bottom: 1px solid #ccc;
+  color: #6588c2;
+}
+#left table td .info li {
+  padding: 0 0 5px 20px;
+}
+#left table td .group {
+  margin: 15px;
+  padding: 0;
+  list-style: none;
+}
+#left table td .group .title {
+  margin-bottom: 5px;
+  padding: 0 0 5px 10px;
+  font-size: 14px;
+  font-size: 1.4rem;
+  border-bottom: 1px dotted #ccc;
+}
+#left table td .group li {
+  padding: 0 0 5px 20px;
+  color: #6588c2;
+}
+#left table .header {
+  padding: 8px 10px 0 10px;
+  background-color: #e2edd7;
+  color: #333;
+}
+#left table .header .red:hover {
+  background-color: #6588c2;
+}
+#left table .header .title {
+  margin: 4px 0 10px 0;
+}
+#left table .header .toggle, #left table .header .active {
+  cursor: pointer;
+  width: 15px;
+  height: 18px;
+  margin-top: -23px;
+  float: right;
+  background: url(../img/slide_on.png) no-repeat left top;
+  background-size: 15px 18px;
+  display: block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#left table .header .toggle:hover, #left table .header .active:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+}
+#left table .header .active {
+  background: url(../img/slide_off.png) no-repeat left top;
+  background-size: 15px 18px;
+}
+#left table .edit {
+  padding: 8px 0 6px 10px;
+}
+#left table .icon-male {
+  color: #53b300;
+  font-size: 14px;
+  font-size: 1.4rem;
+  margin-right: 4px;
+}
+#left table .icon-female {
+  color: #e74c3c;
+  font-size: 14px;
+  font-size: 1.4rem;
+  margin-right: 4px;
+}
+#left table.pos {
+  border-collapse: collapse;
+  border: none !important;
+  box-shadow: none;
+  width: 100% !important;
+}
+#left .group_list p {
+  padding: 0 25px;
+  line-height: 100%;
+}
+#left .group_list p input {
+  margin-right: 5px;
+}
+#left .group_list th {
+  padding-left: 20px;
+}
+#left .group_list .header {
+  padding-left: 10px;
+}
+#left .group_list .body {
+  padding: 10px 25px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#left .group_list .body h3 {
+  font-size: 14px;
+  font-size: 1.4rem;
+  margin-bottom: -5px;
+}
+#left .group_list .body ul {
+  list-style: none;
+}
+#left .group_list .body ul li {
+  padding: 0 0 8px 0;
+}
+
+tbody.none {
+  display: none;
+}
+
+tbody.on {
+  display: visible;
+}
+
+.title_b_group {
+  text-align: center;
+  font-size: 13px;
+  font-size: 1.3rem;
+  color: #6588c2;
+}
+
+/* ===================================================================
+サロン設定
+=================================================================== */
+#salon .date, #salon .time {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  *zoom: 1;
+}
+#salon .date:after, #salon .time:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#salon .date li, #salon .time li {
+  float: left;
+  margin-right: 15px;
+}
+#salon .date li .pulldown, #salon .time li .pulldown {
+  width: 100px;
+}
+#salon .time {
+  margin-top: 15px;
+  clear: both;
+}
+#salon .group_list .icon-calendar, #salon .group_list .event {
+  margin: -50px 5px 0 0;
+  font-size: 30px;
+  font-size: 3rem;
+  text-decoration: none;
+  float: right;
+}
+#salon .group_list .event {
+  margin: -30px 5px 0 0;
+}
+#salon .group_list td h3 {
+  margin-top: 15px;
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+#salon .group_list td p {
+  margin-top: 5px;
+}
+#salon .group_list .button {
+  text-align: center;
+}
+#salon .group_list .button .button_small, #salon .group_list .button .button_small_header {
+  margin: 0 5px;
+  display: inline-block;
+  text-align: center;
+  float: none;
+  border: none;
+}
+#salon .history tr td {
+  font-size: 12px;
+  font-size: 1.2rem;
+  color: #999;
+  line-height: 150%;
+}
+#salon .history .header th {
+  background-color: #f6f6f6;
+  color: #333;
+}
+#salon .history .reserve td {
+  background-color: #daecf9;
+  color: #333;
+}
+#salon .history .today td {
+  background-color: #f5f7c3;
+  color: #333;
+}
+#salon .history .cancelled td {
+  background-color: #f6f6f6;
+  color: #333;
+}
+
+/* ===================================================================
+会員種別等変更設定
+=================================================================== */
+#category .revision {
+  width: 98%;
+  margin: 5px auto;
+  box-shadow: none;
+}
+#category .revision .cat20 td {
+  background-color: #f5f7c3;
+}
+#category .revision .cat90 td {
+  background-color: #f6f6f6;
+}
+#category .revision th, #category .revision td {
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+#category .revision th {
+  text-align: center;
+  padding: 5px 0;
+}
+#category .revision td textarea {
+  width: 100%;
+  height: 90px;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#category .revision .cat {
+  font-weight: bold;
+}
+#category .revision .date, #category .revision #salon .time, #salon #category .revision .time {
+  margin: 0 5px 0 0;
+  padding: 0 0 5PX 0;
+  list-style: none;
+  *zoom: 1;
+  float: left;
+}
+#category .revision .date:after, #category .revision #salon .time:after, #salon #category .revision .time:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#category .revision .date li, #category .revision #salon .time li, #salon #category .revision .time li {
+  float: left;
+  margin-right: 10px;
+}
+#category .revision .date li .pulldown, #category .revision #salon .time li .pulldown, #salon #category .revision .time li .pulldown {
+  width: 90px;
+}
+#category .revision .icon-calendar, #category .revision #salon .group_list .event, #salon .group_list #category .revision .event {
+  float: none;
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  font-size: 2.4rem;
+  line-height: 50%;
+  text-decoration: none;
+}
+#category .list tr.clickable {
+  width: 100%;
+  cursor: pointer;
+}
+#category .list tr.clickable:hover td {
+  background-color: #e5f3fe;
+  -webkit-transition: linear 0.1s;
+  -moz-transition: linear 0.1s;
+  -o-transition: linear 0.1s;
+  transition: linear 0.1s;
+}
+#category .button {
+  text-align: center;
+}
+#category .button .button_small, #category .button .button_small_header {
+  margin: 0 5px;
+  display: inline-block;
+  text-align: center;
+  float: none;
+  border: none;
+}
+
+/* ===================================================================
+ボタン設定
+=================================================================== */
+.button_large {
+  clear: both;
+  width: 250px;
+  height: 48px;
+  margin: 0 auto 40px;
+  width: 250px;
+  height: 48px;
+  border: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 0px;
+  font-size: 14px;
+  font-size: 1.4rem;
+  color: #fff;
+  text-align: center;
+}
+.button_large:hover {
+  background-color: #6588c2;
+}
+
+.submit_large {
+  width: 250px;
+  margin: 10px auto;
+}
+
+.button_small, .button_small_header {
+  width: 80px;
+  height: 24px;
+  margin: 0;
+  display: block;
+  line-height: 190%;
+  float: right;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-weight: normal;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+}
+.button_small:hover, .button_small_header:hover {
+  background-color: #466393;
+  color: #fff;
+}
+
+.button_small_header {
+  margin: -26px 10px 0 0;
+  line-height: 200%;
+}
+
+.pink {
+  background-color: #F0C5E3;
+}
+.pink:hover {
+  background-color: #466393;
+}
+
+.blue {
+  background-color: #6588c2;
+}
+.blue:hover {
+  background-color: #466393;
+}
+
+.red {
+  background-color: #e74c3c;
+}
+.red:hover {
+  background-color: #6588c2;
+}
+
+.green {
+  background-color: #53b300;
+}
+
+.gray {
+  background-color: #bbbbbb;
+}
+
+/* ===================================================================
+大タイトル｜ブルー
+=================================================================== */
+div.title {
+  width: 100%;
+  height: 40px;
+  position: relative;
+  margin: 0 0 20px 10px;
+  padding: 0 8px;
+  color: #fff;
+  background-color: #6588c2;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+}
+div.title h2 {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+div.title span {
+  float: right;
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-weight: normal;
+  padding-top: 2px;
+}
+div.title .icon-group, div.title .icon-edit {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  margin: 0 3px 0 0;
+  padding: 0 5px 0 0;
+  float: left;
+  font-size: 20px;
+  font-size: 2rem;
+  color: #fff;
+}
+div.title .icon-edit {
+  font-size: 22px;
+  font-size: 2.2rem;
+  padding: 1px 5px 0 0;
+}

@@ -1,0 +1,353 @@
+@charset "utf-8";
+/* ===================================================================
+
+Phiten IP Salon 予約管理システム｜イベント管理ページ用CSS
+※SASSで作成しています。必ず.scssファイルを編集して下さい。
+
+=================================================================== */
+/* ===================================================================
+イベントマスタ・イベント予定設定ページ
+=================================================================== */
+#event_index #wrapper {
+  padding: 0 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#event_index #wrapper h2 {
+  border-left: 5px solid #333;
+  margin: 10px 0 -10px 0;
+  padding-left: 10px;
+}
+#event_index #wrapper .event_calendar {
+  width: 100%;
+  min-width: 800px;
+  margin: 0 0 30px 0;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+#event_index #wrapper .event_calendar th {
+  background-color: #e5f3fe;
+  padding: 8px 5px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  border: 1px solid #ccc;
+}
+#event_index #wrapper .event_calendar td {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  text-align: left;
+  vertical-align: top;
+}
+#event_index #wrapper .event_calendar td:first-child:before {
+  display: block;
+  float: left;
+  height: 100px;
+  content: "";
+}
+#event_index #wrapper .event_calendar td a {
+  color: #333;
+  text-decoration: none;
+}
+#event_index #wrapper .event_calendar td a:hover {
+  background-color: #e5f3fe;
+}
+#event_index #wrapper .event_calendar td .icon-plus {
+  padding: 8px;
+  line-height: 100%;
+  font-size: 16px;
+  font-size: 1.6rem;
+  color: #6588c2;
+  float: left;
+  text-decoration: none;
+}
+#event_index #wrapper .event_calendar td .icon-plus:hover {
+  color: #466393;
+  background-color: transparent;
+}
+#event_index #wrapper .event_calendar td .date {
+  margin: 2px 5px 0 0;
+  padding: 0;
+  font-size: 14px;
+  font-size: 1.4rem;
+  float: right;
+}
+#event_index #wrapper .event_calendar td ul {
+  margin: 5px 0 0 20px;
+  padding: 0;
+  clear: both;
+  list-style: none;
+}
+#event_index #wrapper .event_calendar td ul li {
+  font-size: 13px;
+  font-size: 1.3rem;
+  line-height: 150%;
+}
+#event_index #wrapper .event_calendar .holiday {
+  background-color: #f5f7c3;
+}
+#event_index #wrapper .event_calendar .closed {
+  background-color: #ccc;
+}
+#event_index #wrapper .event_calendar .sp_closed {
+  background-color: #888;
+}
+#event_index .event_info {
+  width: 800px;
+  margin: 20px 0;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+#event_index .event_info th, #event_index .event_info td {
+  padding: 2px 15px;
+  vertical-align: middle;
+  text-align: left;
+  font-size: 13px;
+  font-size: 1.3rem;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#event_index .event_info th p, #event_index .event_info td p {
+  margin-right: 15px;
+  float: left;
+}
+#event_index .event_info th p .input_button, #event_index .event_info td p .input_button {
+  width: 100px;
+  height: 30px;
+  margin: -12px 0 0 5px;
+  background-color: #6588c2;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+}
+#event_index .event_info th p .input_button:hover, #event_index .event_info td p .input_button:hover {
+  background-color: #e74c3c;
+}
+#event_index .event_info th {
+  width: 150px;
+  background-color: #efefef;
+}
+#event_index .event_info td {
+  background-color: #fff;
+}
+#event_index .event_info td .pulldown {
+  width: 150px;
+  height: 20px;
+  margin-left: 2px;
+  font-size: 13px;
+  font-size: 1.3rem;
+}
+#event_index .event_info .head {
+  background-color: #ddd;
+}
+#event_index .list {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+#event_index .list colgroup.id {
+  width: 7%;
+}
+#event_index .list colgroup.name {
+  width: 20%;
+}
+#event_index .list colgroup.desc {
+  width: 25%;
+}
+#event_index .list colgroup.term {
+  width: 8%;
+}
+#event_index .list colgroup.reserve {
+  width: 15%;
+}
+#event_index .list colgroup.calendar {
+  width: 5%;
+}
+#event_index .list tr.clickable {
+  width: 100%;
+  cursor: pointer;
+}
+#event_index .list tr.clickable:hover td {
+  background-color: #e5f3fe;
+}
+#event_index .list tr.even td {
+  background-color: #f8f8f8;
+}
+#event_index .list th, #event_index .list td {
+  padding: 0px 10px;
+  vertical-align: middle;
+  font-size: 12px;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+}
+#event_index .list th {
+  background-color: #e2edd7;
+  padding: 8px 5px;
+}
+#event_index .list th a {
+  color: #6588c2;
+  text-decoration: none;
+}
+#event_index .list th a:hover {
+  color: #466393;
+}
+#event_index .list td {
+  background-color: #fff;
+  line-height: 130%;
+}
+#event_index .list td .input_form {
+  width: 100%;
+  color: #333;
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-weight: normal;
+  padding: 5px 8px;
+}
+#event_index .list .group {
+  text-align: center;
+}
+#event_index .list .group .icon-group {
+  font-size: 16px;
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: #6588c2;
+}
+#event_index .list .id {
+  font-size: 12px;
+  font-size: 1.2rem;
+  line-height: 180%;
+  text-align: center;
+}
+#event_index .list .name {
+  color: #6588c2;
+  font-weight: bold;
+}
+#event_index .list .name .icon-female {
+  margin-right: 3px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  color: #e74c3c;
+}
+#event_index .list .name .icon-male {
+  margin-right: 3px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  color: #53b300;
+}
+#event_index .list .name .kana {
+  margin-left: 15px;
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #666;
+}
+#event_index .list .desc textarea {
+  height: 50px;
+}
+#event_index .list .term input {
+  width: 50px;
+  margin-right: 4px;
+}
+#event_index .list .reserve dt {
+  width: 60px;
+  clear: left;
+  float: left;
+  padding-top: 5px;
+}
+#event_index .list .reserve input {
+  width: 50px;
+  margin: 0 4px 5px 6px;
+  padding: 5px;
+}
+#event_index .list .calendar {
+  text-align: center;
+  font-size: 24px;
+  font-size: 2.4rem;
+}
+#event_index .list .calendar a {
+  text-decoration: none;
+}
+
+/* ===================================================================
+イベントプリセットページ｜ポップアップ
+=================================================================== */
+#preset {
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 15px;
+  background-image: none;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#preset h1 {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 4px;
+  display: block;
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+#preset h2 {
+  display: block;
+  padding-bottom: 4px;
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+#preset table {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+#preset table th {
+  width: 100px;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  background-color: #f6f6f6;
+}
+#preset table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+#preset table td .date {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#preset table td .date li {
+  display: inline;
+  margin-right: 5px;
+}
+#preset table td .input_form {
+  margin: 0 4px;
+  padding: 5px 8px;
+  font-size: 13px;
+  font-size: 1.3rem;
+}
+#preset table td textarea {
+  width: 100%;
+  height: 60px;
+}
+#preset table .button {
+  text-align: center;
+}
+#preset table .button input {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  margin: 2px 5px;
+}

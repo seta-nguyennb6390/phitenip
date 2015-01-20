@@ -1,0 +1,497 @@
+@charset "utf-8";
+/* ===================================================================
+
+Phiten IP Salon 予約管理システム｜スケジュール管理ページ用CSS
+※SASSで作成しています。必ず.scssファイルを編集して下さい。
+
+=================================================================== */
+body {
+  background: none;
+  background-color: #fff;
+}
+
+#wrapper {
+  margin: 0 0 0 10px;
+  padding-top: 175px;
+}
+#wrapper .scroll_div {
+  width: 100%;
+}
+
+/* ===================================================================
+fixed_midashiのBODYバージョン用
+=================================================================== */
+#body {
+  background: url(../img/bg_header.png) repeat-x left top;
+}
+#body #wrapper {
+  margin: 0;
+  padding-top: 0;
+}
+#body #fixHeader {
+  width: 100%;
+  position: relative;
+}
+#body #sys_header {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#body #sys_header .user {
+  float: left;
+  margin-left: 30px;
+}
+#body #hd01 {
+  height: 75px;
+  padding: 5px 10px 2px 20px;
+}
+#body #hd01 ul {
+  float: left;
+  margin-left: 50px;
+}
+#body #topicpath {
+  height: 22px;
+}
+#body #schedule_header .utility, #body #schedule_header .reservation, #body #schedule_header .print_header {
+  float: left;
+}
+#body #schedule_header .print_header {
+  font-size: 20px;
+  font-size: 2rem;
+  margin: 0 10px 0 13px;
+  padding-top: 8px;
+  line-height: 100%;
+}
+#body #schedule_header .print_header .icon-print {
+  text-decoration: none;
+  color: #6588c2;
+}
+#body #schedule_header .print_header .icon-print:hover {
+  color: #466393;
+}
+#body #schedule_header .calendar {
+  margin: 0;
+  padding: 6px 0 0 25px;
+}
+
+/* ===================================================================
+ヘッダー
+=================================================================== */
+#fixHeader {
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* ===================================================================
+スケジュールヘッダー
+=================================================================== */
+#schedule_header {
+  margin: 0 -3px 0 0;
+  padding: 6px 10px;
+  list-style: none;
+  *zoom: 1;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+#schedule_header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#schedule_header .date {
+  float: left;
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 4px 0 0 0;
+  line-height: 180%;
+}
+#schedule_header .b_prev {
+  float: left;
+  font-size: 24px;
+  font-size: 2.4rem;
+  margin-right: 10px;
+  line-height: 140%;
+}
+#schedule_header .b_prev a {
+  color: #6588c2;
+  text-decoration: none;
+}
+#schedule_header .b_prev a:hover {
+  color: #466393;
+}
+#schedule_header .b_next {
+  font-size: 24px;
+  font-size: 2.4rem;
+  float: left;
+  line-height: 140%;
+}
+#schedule_header .b_next a {
+  color: #6588c2;
+  text-decoration: none;
+}
+#schedule_header .b_next a:hover {
+  color: #466393;
+}
+#schedule_header .utility, #schedule_header .reservation, #schedule_header .print_header {
+  float: right;
+  margin-bottom: 3px;
+}
+#schedule_header .btn {
+  height: 20px;
+  margin: 1px 4px 0 4px;
+  padding: 6px 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #6588c2;
+  font-size: 13px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 160%;
+  text-align: center;
+}
+#schedule_header .btn:hover {
+  background-color: #466393;
+}
+#schedule_header .btn a {
+  width: 100px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+#schedule_header .print_header {
+  font-size: 26px;
+  font-size: 2.6rem;
+  margin-right: 10px;
+  padding-top: 5px;
+  line-height: 100%;
+}
+#schedule_header .print_header .icon-print {
+  text-decoration: none;
+  color: #6588c2;
+}
+#schedule_header .print_header .icon-print:hover {
+  color: #466393;
+}
+#schedule_header .calendar {
+  font-size: 24px;
+  font-size: 2.4rem;
+  margin: 0;
+  padding: 6px 10px 0 5px;
+  line-height: 100%;
+  float: left;
+}
+#schedule_header .calendar a {
+  text-decoration: none;
+  color: #6588c2;
+}
+#schedule_header .calendar a:hover {
+  color: #466393;
+}
+
+/* ===================================================================
+テーブル
+=================================================================== */
+.data-table {
+  width: 2117px;
+  border-collapse: collapse;
+  border: 1px solid #cccccc;
+  font-size: 11px;
+  font-size: 1.1rem;
+  line-height: 120%;
+}
+.data-table th, .data-table td {
+  border: 1px solid #cccccc;
+}
+.data-table th {
+  height: 30px;
+  text-align: center;
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+.data-table colgroup.no {
+  width: 25px;
+}
+.data-table colgroup.info {
+  width: 220px;
+}
+.data-table colgroup.edit {
+  width: 25px;
+}
+.data-table colgroup.body {
+  width: 12px;
+}
+.data-table th.info {
+  background-color: #f6f6f6;
+  border-bottom: 0;
+}
+.data-table th.morning {
+  background-color: #e5f3fe;
+}
+.data-table th.afternoon {
+  background-color: #cce8fd;
+}
+.data-table th.evening {
+  background-color: #aad7fb;
+}
+.data-table th.night {
+  background-color: #6588c2;
+  color: #fff;
+}
+.data-table th.midnight {
+  background-color: #365d9f;
+  color: #fff;
+}
+.data-table td.no {
+  text-align: center;
+  background-color: white;
+  padding: 0 2px;
+  font-size: 11px;
+  font-size: 1.1rem;
+  font-weight: normal;
+  white-space: nowrap;
+}
+.data-table td.info {
+  background-color: white;
+  padding: 5px 10px;
+  border-right: 0;
+  vertical-align: top;
+}
+.data-table td.info .profile {
+  width: 150px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  font-size: 1.1rem;
+  line-height: 120%;
+  float: left;
+}
+.data-table td.info .profile li {
+  line-height: 140%;
+  margin-left: 1em;
+}
+.data-table td.info .profile li span {
+  font-weight: bold;
+  color: #6588c2;
+}
+.data-table td.info .profile .name {
+  padding-bottom: 5px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  margin: 0 0 -3px -3px;
+}
+.data-table td.info .profile .name a {
+  font-weight: bold;
+}
+.data-table td.info .profile .name a span {
+  text-decoration: none !important;
+}
+.data-table td.info .profile .name a .icon-female {
+  color: #e74c3c;
+  margin-right: 2px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+.data-table td.info .profile .name a .icon-male {
+  color: #53b300;
+  margin-right: 2px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+.data-table td.info .profile .number {
+  font-size: 11px;
+  font-size: 1.1rem;
+}
+.data-table td.info .profile .member {
+  font-weight: bold;
+}
+.data-table td.info .profile .in, .data-table td.info .profile .out {
+  width: 70px;
+  height: 20px;
+  margin: 3px 0 5px 1em;
+  background-color: #b9c6d3;
+  text-align: center;
+  line-height: 20px;
+  font-size: 11px;
+  font-size: 1.1rem;
+}
+.data-table td.info .profile .in a, .data-table td.info .profile .out a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+.data-table td.info .profile .in a:hover, .data-table td.info .profile .out a:hover {
+  background-color: #466393;
+}
+.data-table td.info .profile .out {
+  background-color: #6588c2;
+}
+.data-table td.edit {
+  text-align: center;
+  border-left: 0;
+  vertical-align: top;
+}
+.data-table td.edit ul {
+  list-style: none;
+  margin: -8px 0 0 0;
+  padding: 0 4px 0 0;
+}
+.data-table td.edit ul li {
+  font-size: 17px;
+  font-size: 1.7rem;
+  margin: 0 0 -4px 0;
+  padding: 0;
+  line-height: 100%;
+}
+.data-table td.edit ul li a {
+  text-decoration: none;
+}
+.data-table td.edit ul .small {
+  color: #bdc3c7;
+  text-decoration: none;
+}
+.data-table td.edit ul a:hover .small {
+  color: #6588c2;
+}
+.data-table td.body {
+  font-size: 11px;
+  font-size: 1.1rem;
+  background-color: #f6f6f6;
+  vertical-align: top;
+  padding: 5px;
+  border-right: 0;
+  border-left: 0;
+}
+.data-table td.body ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.data-table td.body ul li {
+  line-height: 130%;
+}
+.data-table td.info_header {
+  height: 12px;
+  background-color: #f6f6f6;
+  border-top: 0;
+}
+.data-table td.hour {
+  border-right: 1px dotted #cccccc;
+}
+.data-table td.min {
+  background-color: #fff;
+  border-right: 1px dotted #cccccc;
+  border-left: 1px dotted #cccccc;
+}
+.data-table td.odd {
+  border-right: 0;
+}
+.data-table td.even {
+  border-left: 0;
+}
+.data-table td.event_header {
+  background-color: #ebc3d9;
+  text-align: left;
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+.data-table td.event {
+  background-color: #ebc3d9;
+}
+.data-table td.member {
+  background-color: #f5f7c3;
+}
+.data-table td.visitor {
+  background-color: #e2edd7;
+}
+.data-table td.beginner {
+  background-color: #daecf9;
+}
+
+.equip td.info {
+  border-right: 1px solid #cccccc;
+}
+.equip td.info .profile {
+  width: 210px;
+}
+
+/* ===================================================================
+カレンダーページ
+=================================================================== */
+#calendar {
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  min-width: 0;
+}
+#calendar #cal_wrapper, #calendar #inner {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 0;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-size: 1.3rem;
+}
+#calendar #cal_wrapper .cal_header, #calendar #inner .cal_header {
+  width: 100%;
+  padding: 0 0 5px 0;
+  display: table;
+  *zoom: 1;
+}
+#calendar #cal_wrapper .cal_header:after, #calendar #inner .cal_header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#calendar #cal_wrapper .cal_header table, #calendar #inner .cal_header table {
+  width: 100%;
+  margin: 5px 0 8px 0;
+}
+#calendar #cal_wrapper .cal_header table .date_left, #calendar #inner .cal_header table .date_left {
+  width: 25%;
+  padding: 0 4px;
+  text-align: left;
+}
+#calendar #cal_wrapper .cal_header table .date_center, #calendar #inner .cal_header table .date_center {
+  width: 50%;
+  text-align: center;
+  padding: 0 4px;
+  font-weight: bold;
+}
+#calendar #cal_wrapper .cal_header table .date_right, #calendar #inner .cal_header table .date_right {
+  width: 25%;
+  text-align: right;
+  padding: 0 4px;
+}
+#calendar #inner {
+  margin: 5px 0 0 0;
+}
+#calendar #inner .week td {
+  background-color: #f6f6f6;
+}
+#calendar #inner td {
+  padding: 10px 0;
+  border: 1px solid #eee;
+  background-color: #fff;
+  text-align: center;
+}
+#calendar #inner .holiday {
+  background-color: #ccc;
+}
+#calendar #inner .close {
+  background-color: #666;
+  color: #fff;
+}

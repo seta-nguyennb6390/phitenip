@@ -1,0 +1,563 @@
+@charset "utf-8";
+/* ===================================================================
+
+Phiten IP Salon 予約管理システム｜サロン設定ページ用CSS
+※SASSで作成しています。必ず.scssファイルを編集して下さい。
+
+=================================================================== */
+/* ===================================================================
+サロン設定ページ
+=================================================================== */
+#left table {
+  width: 100%;
+  margin: 0 10px 30px 10px;
+  padding: 15px 15px 25px 15px;
+  background-color: #fff;
+  border-collapse: collapse;
+  border: 1px solid #cecece;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+}
+#left table th, #left table td {
+  border: 1px solid #cccccc;
+  padding: 8px 10px 8px 15px;
+  font-size: 13px;
+  font-size: 1.3rem;
+}
+#left table th {
+  width: 110px;
+  background-color: #f6f6f6;
+  text-align: center;
+}
+#left table th .button_small, #left table th .button_small_header {
+  margin: 4px auto 0;
+  padding: 0;
+  float: none;
+}
+#left table th h2 {
+  font-size: 13px;
+  font-size: 1.3rem;
+  line-height: 210%;
+}
+#left table td {
+  line-height: 150%;
+}
+#left table .gray {
+  background-color: #f8f8f8;
+  font-weight: bold;
+  text-align: center;
+}
+#left table .open, #left table #wrapper .event_info td .holiday, #wrapper .event_info td #left table .holiday, #left table #wrapper .event_info td .closed, #wrapper .event_info td #left table .closed, #left table .close {
+  margin: 0 0 5px 0;
+  padding: 0;
+  list-style: none;
+}
+#left table .open li, #left table #wrapper .event_info td .holiday li, #wrapper .event_info td #left table .holiday li, #left table #wrapper .event_info td .closed li, #wrapper .event_info td #left table .closed li, #left table .close li {
+  width: 60px;
+  float: left;
+  margin: 0 24px 0 0;
+  display: inline;
+}
+#left table .open, #left table #wrapper .event_info td .holiday, #wrapper .event_info td #left table .holiday, #left table #wrapper .event_info td .closed, #wrapper .event_info td #left table .closed, #left table span {
+  float: left;
+}
+#left table .close {
+  margin-top: -10px;
+}
+#left table p {
+  clear: both;
+}
+#left table .header {
+  padding: 8px 10px 0 10px;
+  background-color: #e2edd7;
+  color: #333;
+}
+
+/* ===================================================================
+営業日・時間設定
+=================================================================== */
+#salon_open .cal {
+  display: block;
+  float: right;
+}
+#salon_open .cal .icon-calendar {
+  font-size: 24px;
+  font-size: 2.4rem;
+}
+#salon_open .inner, #salon_open .inner02 {
+  margin-top: 10px !important;
+  padding: 0;
+  border: 0 !important;
+  border-collapse: collapse;
+  box-shadow: none !important;
+  overflow: hidden;
+}
+#salon_open .inner th, #salon_open .inner02 th, #salon_open .inner td, #salon_open .inner02 td {
+  width: 25% !important;
+  padding: 3px !important;
+  border: 0 !important;
+  text-align: left !important;
+  font-weight: normal;
+  background-color: #fff !important;
+  white-space: nowrap;
+}
+#salon_open .inner th, #salon_open .inner02 th {
+  width: 15% !important;
+}
+#salon_open .inner02 th, #salon_open .inner02 td {
+  width: 20% !important;
+}
+
+/* ===================================================================
+営業日・時間設定｜カレンダー
+=================================================================== */
+#wrapper {
+  padding: 0 30px;
+}
+#wrapper .main_title {
+  border-left: 5px solid #333;
+  margin: 10px 0 -10px 0;
+  padding-left: 10px;
+}
+#wrapper .event_info {
+  width: 500px;
+  margin: 20px 0;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+#wrapper .event_info td {
+  padding: 10px 15px;
+  vertical-align: middle;
+  text-align: left;
+  font-size: 13px;
+  font-size: 1.3rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#wrapper .event_info td .open, #wrapper .event_info td .holiday, #wrapper .event_info td .closed {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: inline-block;
+  vertical-align: middle;
+}
+#wrapper .event_info td .holiday {
+  background-color: #F5F7C3;
+}
+#wrapper .event_info td .closed {
+  background-color: #888;
+}
+#wrapper .event_calendar {
+  width: 100%;
+  min-width: 800px;
+  margin: 20px 0 30px 0;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+#wrapper .event_calendar th {
+  background-color: #e5f3fe;
+  padding: 8px 5px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  border: 1px solid #ccc;
+}
+#wrapper .event_calendar td {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  text-align: left;
+  vertical-align: top;
+}
+#wrapper .event_calendar td:first-child:before {
+  display: block;
+  float: left;
+  height: 100px;
+  content: "";
+}
+#wrapper .event_calendar td a {
+  color: #333;
+  text-decoration: none;
+}
+#wrapper .event_calendar td a:hover {
+  background-color: #e5f3fe;
+}
+#wrapper .event_calendar td .icon-plus {
+  margin: 2px 0 0 4px;
+  padding: 0;
+  font-size: 16px;
+  font-size: 1.6rem;
+  color: #6588c2;
+  float: left;
+  text-decoration: none;
+}
+#wrapper .event_calendar td .icon-plus:hover {
+  color: #466393;
+  background-color: transparent;
+}
+#wrapper .event_calendar td .date {
+  margin: 2px 5px 0 0;
+  padding: 0;
+  font-size: 14px;
+  font-size: 1.4rem;
+  float: right;
+}
+#wrapper .event_calendar td ul {
+  margin: 5px 0 0 20px;
+  padding: 0;
+  clear: both;
+  list-style: none;
+}
+#wrapper .event_calendar td ul li {
+  font-size: 13px;
+  font-size: 1.3rem;
+  line-height: 150%;
+}
+#wrapper .event_calendar .holiday {
+  background-color: #f5f7c3;
+}
+#wrapper .event_calendar .closed {
+  background-color: #ccc;
+}
+#wrapper .event_calendar .sp_closed {
+  background-color: #888;
+}
+
+/* ===================================================================
+イベントプリセットページ｜ポップアップ
+=================================================================== */
+#preset {
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 15px;
+  background-image: none;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#preset h1 {
+  margin: 0;
+  padding: 0;
+  display: block;
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+#preset h2 {
+  display: block;
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+#preset table {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+#preset table th {
+  width: 100px;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  background-color: #f6f6f6;
+}
+#preset table th span {
+  color: #e74c3c;
+}
+#preset table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+#preset table td ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#preset table td ul li {
+  display: inline;
+  margin-right: 5px;
+}
+#preset table td .input_form {
+  margin: 3px 5px;
+  padding: 5px 8px;
+  font-size: 13px;
+  font-size: 1.3rem;
+}
+#preset table td textarea {
+  width: 100%;
+  height: 60px;
+}
+#preset table td .icon-calendar {
+  margin-top: -30px;
+  display: block;
+  float: right;
+  font-size: 24px;
+  font-size: 2.4rem;
+  text-decoration: none;
+}
+#preset table td.button {
+  text-align: center;
+}
+#preset table td.button input {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  margin: 2px 5px;
+  float: none;
+}
+
+/* ===================================================================
+サロン設定ページ
+=================================================================== */
+#salon_list #wrapper {
+  padding: 0 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#salon_list .entry {
+  width: 800px;
+  margin: 20px 0;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+#salon_list .entry th, #salon_list .entry td {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  vertical-align: middle;
+  text-align: left;
+  font-size: 13px;
+  font-size: 1.3rem;
+}
+#salon_list .entry th {
+  width: 150px;
+  background-color: #efefef;
+}
+#salon_list .entry td {
+  background-color: #fff;
+}
+#salon_list .entry td .button {
+  width: 180px;
+  height: 30px;
+  margin: 0 0 0 5px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  background-color: #6588c2;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+}
+#salon_list .entry td .button:hover {
+  background-color: #466393;
+}
+#salon_list .entry td .button span {
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+#salon_list .list {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+#salon_list .list tr.clickable {
+  width: 100%;
+  cursor: pointer;
+}
+#salon_list .list tr.clickable:hover td {
+  background-color: #e5f3fe;
+}
+#salon_list .list tr.off td {
+  background-color: #f8f8f8;
+  color: #999;
+}
+#salon_list .list th, #salon_list .list td {
+  padding: 4px 10px;
+  vertical-align: middle;
+  font-size: 13px;
+  font-size: 1.3rem;
+  border: 1px solid #ccc;
+}
+#salon_list .list th {
+  background-color: #e2edd7;
+}
+#salon_list .list th a {
+  color: #6588c2;
+  text-decoration: none;
+}
+#salon_list .list th a:hover {
+  color: #466393;
+}
+#salon_list .list td {
+  background-color: #fff;
+  line-height: 130%;
+  -webkit-transition: linear 0.1s;
+  -moz-transition: linear 0.1s;
+  -o-transition: linear 0.1s;
+  transition: linear 0.1s;
+}
+#salon_list .list td .on, #salon_list .list td .off {
+  width: 60px;
+  padding: 4px;
+  background-color: #53b300;
+  color: #fff;
+  text-align: center;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+#salon_list .list td .off {
+  background-color: #cccccc;
+}
+#salon_list .list .image {
+  width: 60px;
+  padding: 5px 5px 2px 5px;
+}
+#salon_list .list .running {
+  text-align: center;
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+#salon_list .list .running .on, #salon_list .list .running td .off, #salon_list .list td .running .off, #salon_list .list .running .off {
+  margin: 0 auto;
+}
+#salon_list .list .gender {
+  text-align: center;
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+#salon_list .list .gender .unisex, #salon_list .list .gender .female {
+  width: 60px;
+  margin: 0 auto;
+  padding: 4px;
+  background-color: #cccccc;
+  color: #fff;
+  text-align: center;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+#salon_list .list .gender .female {
+  background-color: #ebc3d9;
+}
+#salon_list .list .equip_coupon {
+  padding: 5px;
+}
+#salon_list .list .equip_coupon img {
+  width: 60px;
+  float: left;
+  margin-right: 30px;
+}
+#salon_list .list .equip_coupon .on, #salon_list .list .equip_coupon td .off, #salon_list .list td .equip_coupon .off {
+  float: left;
+}
+#salon_list .equipment colgroup.running {
+  width: 8%;
+}
+#salon_list .equipment colgroup.image {
+  width: 60px;
+}
+#salon_list .equipment colgroup.name {
+  width: 40%;
+}
+#salon_list .equipment colgroup.reservation {
+  width: 8%;
+}
+#salon_list .equipment colgroup.gender {
+  width: 8%;
+}
+#salon_list .equipment colgroup.interval {
+  width: 40%;
+}
+#salon_list .category colgroup.running {
+  width: 8%;
+}
+#salon_list .category colgroup.category {
+  width: 15%;
+}
+#salon_list .category colgroup.gender {
+  width: 8%;
+}
+#salon_list .category colgroup.limited_term {
+  width: 8%;
+}
+#salon_list .category colgroup.limited_day {
+  width: 8%;
+}
+#salon_list .category colgroup.limited_hour {
+  width: 8%;
+}
+#salon_list .category colgroup.equipment {
+  width: 60%;
+}
+#salon_list .category .equipment {
+  padding: 5px 5px 2px 5px;
+}
+#salon_list .category .equipment img {
+  margin-right: 5px;
+}
+#salon_list .category .gender {
+  text-align: left;
+}
+#salon_list .coupon colgroup.running {
+  width: 8%;
+}
+#salon_list .coupon colgroup.name {
+  width: 42%;
+}
+#salon_list .coupon colgroup.term {
+  width: 8%;
+}
+#salon_list .coupon colgroup.equipment {
+  width: 42%;
+}
+
+/* ===================================================================
+ボタン設定
+=================================================================== */
+.button_small, .button_small_header {
+  margin: 0 5px 0 0;
+  float: right;
+}
+.button_small:hover, .button_small_header:hover {
+  background-color: #466393;
+}
+
+.button_small_header {
+  margin: -26px 15px 0 0;
+}

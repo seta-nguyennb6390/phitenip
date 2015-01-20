@@ -1,0 +1,505 @@
+@charset "utf-8";
+/* ===================================================================
+
+Phiten IP Salon 予約管理システム｜ユーザー管理ページ用CSS
+※SASSで作成しています。必ず.scssファイルを編集して下さい。
+
+=================================================================== */
+/* ===================================================================
+ユーザー一覧ページ
+=================================================================== */
+#user_index #wrapper {
+  padding: 0 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#user_index .entry, #user_index .search {
+  width: 800px;
+  margin: 20px 0;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+#user_index .entry th, #user_index .entry td, #user_index .search th, #user_index .search td {
+  text-align: left;
+  font-size: 13px;
+  font-size: 1.3rem;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#user_index .entry th, #user_index .search th {
+  width: 150px;
+  background-color: #efefef;
+}
+#user_index .entry td, #user_index .search td {
+  background-color: #fff;
+}
+#user_index .entry th, #user_index .entry td {
+  padding: 10px 15px;
+  vertical-align: middle;
+}
+#user_index .entry td .button {
+  width: 180px;
+  height: 30px;
+  margin: 0 0 0 5px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  background-color: #6588c2;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+}
+#user_index .entry td .button:hover {
+  background-color: #466393;
+}
+#user_index .entry td .button span {
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+#user_index .search th, #user_index .search td {
+  padding: 2px 15px;
+  vertical-align: middle;
+}
+#user_index .search th p, #user_index .search td p {
+  margin-right: 15px;
+  float: left;
+}
+#user_index .search th p .input_button, #user_index .search td p .input_button {
+  width: 100px;
+  height: 30px;
+  margin: -12px 0 0 5px;
+  background-color: #6588c2;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+}
+#user_index .search th p .input_button:hover, #user_index .search td p .input_button:hover {
+  background-color: #466393;
+}
+#user_index .search td .pulldown {
+  width: 150px;
+  height: 20px;
+  margin-left: 2px;
+  font-size: 13px;
+  font-size: 1.3rem;
+}
+#user_index .list {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+#user_index .list colgroup.group {
+  width: 7%;
+}
+#user_index .list colgroup.id {
+  width: 16%;
+}
+#user_index .list colgroup.name {
+  width: 18%;
+}
+#user_index .list colgroup.category {
+  width: 12%;
+}
+#user_index .list colgroup.status {
+  width: 9%;
+}
+#user_index .list colgroup.tel {
+  width: 11%;
+}
+#user_index .list colgroup.address {
+  width: 27%;
+}
+#user_index .list tr.clickable {
+  width: 100%;
+  cursor: pointer;
+}
+#user_index .list tr.clickable:hover td {
+  background-color: #e5f3fe;
+}
+#user_index .list tr.even td {
+  background-color: #f8f8f8;
+}
+#user_index .list th, #user_index .list td {
+  padding: 4px 10px;
+  vertical-align: middle;
+  font-size: 13px;
+  font-size: 1.3rem;
+  border: 1px solid #ccc;
+}
+#user_index .list th {
+  background-color: #e2edd7;
+}
+#user_index .list th a {
+  color: #6588c2;
+  text-decoration: none;
+}
+#user_index .list th a:hover {
+  color: #466393;
+}
+#user_index .list td {
+  background-color: #fff;
+  line-height: 130%;
+  -webkit-transition: linear 0.1s;
+  -moz-transition: linear 0.1s;
+  -o-transition: linear 0.1s;
+  transition: linear 0.1s;
+}
+#user_index .list .group {
+  text-align: center;
+}
+#user_index .list .group .icon-group {
+  font-size: 16px;
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: #6588c2;
+}
+#user_index .list .id {
+  font-size: 12px;
+  font-size: 1.2rem;
+  line-height: 150%;
+}
+#user_index .list .name {
+  color: #6588c2;
+  font-weight: bold;
+}
+#user_index .list .name .icon-female {
+  margin-right: 3px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  color: #e74c3c;
+}
+#user_index .list .name .icon-male {
+  margin-right: 3px;
+  font-size: 13px;
+  font-size: 1.3rem;
+  color: #53b300;
+}
+#user_index .list .name .kana {
+  margin-left: 15px;
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #666;
+}
+
+/* ===================================================================
+ユーザー詳細ページ
+=================================================================== */
+#user_detail #left {
+  width: 600px;
+  margin: 30px 20px 20px 50px;
+  float: left;
+}
+#user_detail #left #infoBox ul .button {
+  margin: -34px 0 0 0;
+}
+#user_detail #left #infoBox ul .button a {
+  width: 80px;
+  height: 24px;
+  display: block;
+  line-height: 190%;
+  float: right;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-weight: normal;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+}
+#user_detail #left #infoBox ul .button a:hover {
+  background-color: #466393;
+}
+#user_detail #left #infoBox ul .name {
+  font-size: 16px;
+  font-size: 1.6rem;
+  margin-bottom: 5px;
+  padding: 0 100px 5px 0;
+  border-bottom: 1px dotted #ccc;
+}
+#user_detail #left #infoBox ul .member, #user_detail #left #infoBox ul .status {
+  clear: both;
+  font-size: 12px;
+  font-size: 1.2rem;
+  padding-left: 15px;
+}
+#user_detail #left #infoBox ul .member {
+  padding-top: 20px;
+}
+#user_detail #left #infoBox ul .date {
+  font-size: 14px;
+  font-size: 1.4rem;
+  padding-top: 10px;
+}
+#user_detail #left #infoBox ul .sc_head {
+  font-size: 13px;
+  font-size: 1.3rem;
+  padding-left: 10px;
+}
+#user_detail #left #infoBox ul .sc_body {
+  font-size: 12px;
+  font-size: 1.2rem;
+  padding: 0 0 10px 20px;
+}
+#user_detail #left table {
+  width: 100%;
+  margin: 0 10px 30px 10px;
+  padding: 15px 15px 25px 15px;
+  background-color: #fff;
+  border-collapse: collapse;
+  border: 1px solid #cecece;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+}
+#user_detail #left table th, #user_detail #left table td {
+  border: 1px solid #cccccc;
+  padding: 8px 5px 8px 15px;
+  font-size: 13px;
+  font-size: 1.3rem;
+}
+#user_detail #left table th {
+  width: 110px;
+  background-color: #f6f6f6;
+  text-align: left;
+}
+#user_detail #left table th .icon-member, #user_detail #left table th .icon-salon02, #user_detail #left table th .icon-event {
+  float: left;
+  margin-right: 6px;
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+#user_detail #left table th .icon-salon02 {
+  font-size: 22px;
+  font-size: 2.2rem;
+  line-height: 130%;
+}
+#user_detail #left table th .icon-event {
+  font-size: 22px;
+  font-size: 2.2rem;
+  line-height: 130%;
+}
+#user_detail #left table th a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+#user_detail #left table th a .icon-slide {
+  margin-top: -22px;
+  float: right;
+  font-size: 18px;
+  font-size: 1.8rem;
+  line-height: 100%;
+}
+#user_detail #left table th h2 {
+  font-size: 13px;
+  font-size: 1.3rem;
+  line-height: 210%;
+}
+#user_detail #left table td .pos {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#user_detail #left table td .pos .form {
+  float: left;
+  margin-right: 10px;
+}
+#user_detail #left table td .pos .form .input_form {
+  width: 100%;
+  padding: 5px 8px;
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+#user_detail #left table td .pos .num {
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-bottom: 1px dotted #ccc;
+}
+#user_detail #left table td .pos .title {
+  padding-top: 10px;
+}
+#user_detail #left table td .pos .cd {
+  font-size: 12px;
+  font-size: 1.2rem;
+  line-height: 40px;
+}
+#user_detail #left table td .record {
+  clear: both;
+  margin: 30px 0 -5px 0;
+}
+#user_detail #left table td .input_form {
+  margin: 4px 0;
+  padding: 5px 8px;
+  font-size: 13px;
+  font-size: 1.3rem;
+}
+#user_detail #left table td .input_form:focus {
+  background-color: #e5f3fe;
+}
+#user_detail #left table td select {
+  min-width: 80px;
+}
+#user_detail #left table .header {
+  padding: 8px 10px 0 10px;
+  background-color: #e2edd7;
+  color: #333;
+}
+#user_detail #left table .header .green {
+  margin-right: 100px;
+}
+#user_detail #left table .header .green:hover {
+  background-color: #6588c2;
+}
+#user_detail #left table .header .title {
+  margin: 4px 0 10px 0;
+}
+#user_detail #left table .header .toggle, #user_detail #left table .header .active {
+  cursor: pointer;
+  width: 15px;
+  height: 18px;
+  margin-top: -23px;
+  float: right;
+  background: url(../img/slide_on.png) no-repeat left top;
+  background-size: 15px 18px;
+  display: block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#user_detail #left table .header .toggle:hover, #user_detail #left table .header .active:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+}
+#user_detail #left table .header .active {
+  background: url(../img/slide_off.png) no-repeat left top;
+  background-size: 15px 18px;
+}
+#user_detail #left table .edit {
+  padding: 8px 0 6px 10px;
+}
+#user_detail #left table .icon-male {
+  color: #53b300;
+  font-size: 14px;
+  font-size: 1.4rem;
+  margin-right: 4px;
+}
+#user_detail #left table .icon-female {
+  color: #e74c3c;
+  font-size: 14px;
+  font-size: 1.4rem;
+  margin-right: 4px;
+}
+#user_detail #left table.pos {
+  border-collapse: collapse;
+  border: none !important;
+  box-shadow: none;
+  width: 100% !important;
+}
+#user_detail tbody.none {
+  display: none;
+}
+#user_detail tbody.on {
+  display: visible;
+}
+
+/* ===================================================================
+ボタン設定
+=================================================================== */
+.button_small, .button_small_header {
+  margin: 0 5px 0 0;
+  float: right;
+}
+.button_small:hover, .button_small_header:hover {
+  background-color: #466393;
+}
+
+.button_small_header {
+  margin: -26px 15px 0 0;
+}
+
+/* ===================================================================
+ユーザー検索ページ｜ポップアップ
+=================================================================== */
+#user_search {
+  width: 100%;
+  min-width: 0;
+  background: none;
+  background-color: #f6f6f6;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#user_search table {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 0 20px 0;
+  border-collapse: collapse;
+  border-bottom: 1px dotted #ccc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-size: 1.3rem;
+}
+#user_search table .record {
+  color: #e74c3c;
+  padding-bottom: 20px;
+}
+#user_search table td {
+  padding: 5px;
+}
+#user_search table th.info {
+  width: 120px;
+  padding-left: 20px;
+  text-align: left;
+}
+#user_search table th.record {
+  line-height: 150%;
+}
+#user_search ul {
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+  float: left;
+  left: 50%;
+  position: relative;
+}
+#user_search ul li {
+  float: left;
+  left: -50%;
+  position: relative;
+  margin: 0 2px;
+}
+#user_search ul li a {
+  display: block;
+}
+#user_search ul li a:hover {
+  color: #fff;
+  background-color: #466393;
+}

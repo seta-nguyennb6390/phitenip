@@ -1,0 +1,178 @@
+.sidr {
+	display:none;
+	position:absolute;
+	position:fixed;
+	top:0;
+	height:100%;
+	z-index:999999;
+	width:260px;
+	overflow-x:none;
+	overflow-y:auto;
+	font-size:12px;
+	background:#bbb;
+	color:#fff;
+	-webkit-box-shadow:inset 0 0 5px 5px #888;
+	-moz-box-shadow:inset 0 0 5px 5px #888;
+	box-shadow:inset 0 0 5px 5px #888;
+}
+
+.sidr .sidr-inner {
+	padding:0 0 15px
+}
+
+.sidr .sidr-inner>p {
+	margin-left:15px;
+	margin-right:15px
+}
+
+.sidr.right {
+	left:auto;
+	right:-260px
+}
+
+.sidr.left {
+	left:-260px;
+	right:auto
+}
+
+.sidr h1,.sidr h2,.sidr h3,.sidr h4,.sidr h5,.sidr h6 {
+	font-size:14px;
+	font-weight:bold;
+	padding: 7px 15px;
+	margin:0;
+	color:#fff;
+	line-height: 22px;
+	background-color: #6588C2;
+}
+.sidr h2 {
+	background-color: #39424D;
+}
+
+.sidr p {
+	font-size:12px;
+	margin:0 0 12px
+}
+
+.sidr p a {
+	color:rgba(255,255,255,0.9);
+}
+
+.sidr>p {
+	margin-left:15px;
+	margin-right:15px
+}
+
+.sidr ul {
+	display:block;
+	margin:0 0 15px;
+	padding:0;
+	border-top:1px solid #888;
+	border-bottom:1px solid #ccc;
+}
+
+.sidr ul li {
+	display:block;
+	margin:0;
+	line-height: 22px;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #888;
+	padding: 5px 0;
+}
+
+.sidr ul li:hover,.sidr ul li.active,.sidr ul li.sidr-class-active {
+	border-top:none;
+	line-height: 22px;
+	margin: 0;
+	padding: 5px 0;
+}
+
+.sidr ul li:hover>a,.sidr ul li:hover>span,.sidr ul li.active>a,.sidr ul li.active>span,.sidr ul li.sidr-class-active>a,.sidr ul li.sidr-class-active>span {
+	padding-top: 1px;
+	color: #333;
+}
+
+.sidr ul li a,.sidr ul li span {
+		padding:0 15px;
+		display:block;
+		text-decoration:none;
+		color:#fff
+}
+
+.sidr ul li ul {
+	border-bottom:none;
+	margin:0
+}
+
+.sidr ul li ul li {
+	line-height: 22px;
+	font-size:12px
+}
+
+.sidr ul li ul li:last-child {
+	border-bottom:none
+}
+
+.sidr ul li ul li:hover,.sidr ul li ul li.active,.sidr ul li ul li.sidr-class-active {
+	border-top:none;
+	line-height: 22px
+}
+
+.sidr ul li ul li:hover>a,.sidr ul li ul li:hover>span,.sidr ul li ul li.active>a,.sidr ul li ul li.active>span,.sidr ul li ul li.sidr-class-active>a,.sidr ul li ul li.sidr-class-active>span {
+	-webkit-box-shadow:inset 0 0 15px 3px #474134;
+	-moz-box-shadow:inset 0 0 15px 3px #474134;
+	box-shadow:inset 0 0 15px 3px #474134
+}
+
+.sidr ul li ul li a,.sidr ul li ul li span {
+	color:rgba(255,255,255,0.8);
+	padding-left:30px
+}
+
+.sidr form {
+	margin:0 15px
+}
+
+.sidr label {
+	font-size:12px
+}
+
+.sidr input[type="text"],.sidr input[type="password"],.sidr input[type="date"],.sidr input[type="datetime"],.sidr input[type="email"],.sidr input[type="number"],.sidr input[type="search"],.sidr input[type="tel"],.sidr input[type="time"],.sidr input[type="url"],.sidr textarea,.sidr select {
+	width:100%;
+	font-size:12px;
+	padding:5px;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	margin:0 0 10px;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	-ms-border-radius:2px;
+	-o-border-radius:2px;
+	border-radius:2px;
+	border:none;
+	background:rgba(0,0,0,0.1);
+	color:rgba(255,255,255,0.6);
+	display:block;
+	clear:both
+}
+
+.sidr input[type=checkbox] {
+	width:auto;
+	display:inline;
+	clear:none
+}
+
+.sidr input[type=button],.sidr input[type=submit] {
+	color:#333;
+	background:#fff
+}
+
+.sidr input[type=button]:hover,.sidr input[type=submit]:hover {
+	background:rgba(255,255,255,0.9)
+}
+
+.sidr a .icon-menu {
+	color: #fff;
+	float: right;
+	font-size: 14px;
+}

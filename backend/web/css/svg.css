@@ -1,0 +1,70 @@
+/*
+ * Created with iconvau.lt
+ */
+
+@font-face {
+  font-family: "phiten";
+  src: url("../fonts/phiten_1893ae55153edfe226b3137b56a5182d.eot");
+  src: url("../fonts/phiten_1893ae55153edfe226b3137b56a5182d.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/phiten_1893ae55153edfe226b3137b56a5182d.woff") format("woff"),
+       url("../fonts/phiten_1893ae55153edfe226b3137b56a5182d.ttf") format("truetype"),
+       url("../fonts/phiten_1893ae55153edfe226b3137b56a5182d.svg#phiten") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon-salon02:before,
+.icon-home:before,
+.icon-female:before,
+.icon-menu:before,
+.icon-calendar:before,
+.icon-coupon:before,
+.icon-scroll:before,
+.icon-slide:before,
+.icon-setting:before,
+.icon-arrow_next:before,
+.icon-print:before,
+.icon-event:before,
+.icon-topicpath:before,
+.icon-group:before,
+.icon-salon:before,
+.icon-arrow_prev:before,
+.icon-status:before,
+.icon-news:before,
+.icon-member:before,
+.icon-plus:before,
+.icon-male:before,
+.icon-edit:before {
+  font-family: "phiten";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  text-decoration: inherit;
+}
+
+.icon-salon02:before { content: "\f100"; }
+.icon-home:before { content: "\f101"; }
+.icon-female:before { content: "\f102"; }
+.icon-menu:before { content: "\f103"; }
+.icon-calendar:before { content: "\f104"; }
+.icon-coupon:before { content: "\f105"; }
+.icon-scroll:before { content: "\f106"; }
+.icon-slide:before { content: "\f107"; }
+.icon-setting:before { content: "\f108"; }
+.icon-arrow_next:before { content: "\f109"; }
+.icon-print:before { content: "\f10a"; }
+.icon-event:before { content: "\f10b"; }
+.icon-topicpath:before { content: "\f10c"; }
+.icon-group:before { content: "\f10d"; }
+.icon-salon:before { content: "\f10e"; }
+.icon-arrow_prev:before { content: "\f10f"; }
+.icon-status:before { content: "\f110"; }
+.icon-news:before { content: "\f111"; }
+.icon-member:before { content: "\f112"; }
+.icon-plus:before { content: "\f113"; }
+.icon-male:before { content: "\f114"; }
+.icon-edit:before { content: "\f115"; }

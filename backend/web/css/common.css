@@ -1,0 +1,584 @@
+@charset "utf-8";
+/* ===================================================================
+
+Phiten IP Salon 予約管理システム｜共通設定CSS
+※SASSで作成しています。必ず.scssファイルを編集して下さい。
+
+=================================================================== */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-width: 800px;
+  color: #333;
+  background: url(../img/container_bg.jpg) no-repeat 50% top #f8f8f8;
+}
+
+a {
+  color: #6588c2;
+}
+a:hover {
+  color: #466393;
+}
+
+.separator {
+  border-top: 1px dotted #ccc;
+  margin: 0 0 -18px 0;
+  padding: 0 0 8px 0;
+}
+
+/* ===================================================================
+ヘッダー
+=================================================================== */
+#sys_header {
+  height: 20px;
+  background-color: #6588c2;
+  padding: 0 10px;
+  *zoom: 1;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#sys_header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#sys_header p {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  font-size: 1.1rem;
+  color: #fff;
+}
+#sys_header .sys {
+  float: left;
+}
+#sys_header .user {
+  float: right;
+}
+
+#hd01 {
+  height: 75px;
+  padding: 5px 10px 2px 15px;
+  background-color: #f6f6f6;
+  *zoom: 1;
+}
+#hd01:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#hd01 h1 {
+  float: left;
+  font-size: 18px;
+  font-size: 1.8rem;
+  padding: 10px 0 0 60px;
+  background: url(../img/logo_phiten.png) no-repeat left 50%;
+  background-size: 50px 40px;
+  min-height: 40px;
+}
+#hd01 ul {
+  margin: 14px 0 0 0;
+  padding: 0;
+  float: right;
+  list-style: none;
+  *zoom: 1;
+}
+#hd01 ul:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#hd01 ul li {
+  width: 80px;
+  float: left;
+  text-align: center;
+}
+#hd01 ul li a {
+  text-decoration: none;
+}
+#hd01 ul li p {
+  margin: 0;
+  padding: 0;
+  line-height: 100%;
+}
+#hd01 ul li .icon {
+  margin-bottom: 2px;
+  color: #6588c2;
+}
+#hd01 ul li .salon {
+  margin-bottom: 0px;
+}
+#hd01 ul li a:hover .icon {
+  color: #466393;
+}
+#hd01 ul li .text {
+  width: 70px;
+  margin: 0 auto;
+  padding: 2px 0;
+  font-size: 11px;
+  font-size: 1.1rem;
+  line-height: 100%;
+  color: #fff;
+  background-color: #6588c2;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+#hd01 ul li a:hover .text {
+  background-color: #466393;
+}
+#hd01 ul .active .icon {
+  color: #466393;
+}
+#hd01 ul .active .text {
+  background-color: #466393;
+}
+#hd01 .navi {
+  font-size: 28px;
+  font-size: 2.8rem;
+}
+#hd01 .icon-salon {
+  font-size: 30px;
+  font-size: 3rem;
+}
+
+/* ===================================================================
+パンくずリスト
+=================================================================== */
+#topicpath {
+  height: 22px;
+  margin-top: -12px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #bbbbbb;
+}
+#topicpath p {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+#topicpath p .icon-topicpath {
+  padding: 0 10px 0 15px;
+  font-size: 7px;
+  font-size: 0.7rem;
+  line-height: 19px;
+}
+#topicpath a {
+  color: #fff;
+}
+#topicpath a:hover {
+  color: #333;
+}
+
+/* ===================================================================
+コンテンツ本体
+=================================================================== */
+#wrapper {
+  *zoom: 1;
+}
+#wrapper:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#wrapper #left {
+  width: 600px;
+  margin: 30px 20px 20px 30px;
+}
+
+/* ===================================================================
+フォームパーツ｜共通
+=================================================================== */
+.input_form {
+  margin: 4px 0;
+  padding: 5px 8px;
+  font-size: 16px;
+  font-size: 1.6rem;
+  background-color: #f6f7f8;
+  border: 1px solid #cecece;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 0px inset;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 0px inset;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-size: 1.3rem;
+}
+
+input.focus {
+  background-color: #fbe1ea;
+}
+
+.input_button {
+  font-size: 13px;
+  font-size: 1.3rem;
+  color: #fff;
+  text-align: center;
+  border: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.button_small, .button_small_header {
+  border: none;
+}
+
+select {
+  height: 22px;
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+
+.equip_time input[type=radio], .equip_time input[type=checkbox] {
+  display: none;
+}
+.equip_time input.visible[type=radio], .equip_time input.visible[type=checkbox] {
+  display: inline;
+  margin-right: 2px;
+}
+.equip_time .radio {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: background-color linear;
+  -webkit-transition-delay: 0.2s;
+  -moz-transition: background-color linear 0.2s;
+  -o-transition: background-color linear 0.2s;
+  transition: background-color linear 0.2s;
+  position: relative;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  margin: 0 3px 8px 0;
+  padding: 12px 12px 12px 42px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #f6f7f8;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.equip_time .radio:hover {
+  background-color: #e2edd7;
+}
+.equip_time .radio:hover:after {
+  border-color: #53b300;
+}
+.equip_time .radio:after {
+  -webkit-transition: background-color linear;
+  -webkit-transition-delay: 0.2s;
+  -moz-transition: background-color linear 0.2s;
+  -o-transition: background-color linear 0.2s;
+  transition: background-color linear 0.2s;
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  display: block;
+  margin-top: -10px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #bbb;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  content: '';
+}
+.equip_time .radio:before {
+  -webkit-transition: background-color linear;
+  -webkit-transition-delay: 0.2s;
+  -moz-transition: background-color linear 0.2s;
+  -o-transition: background-color linear 0.2s;
+  transition: background-color linear 0.2s;
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  display: block;
+  margin-top: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #53b300;
+  content: '';
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+.equip_time input[type=radio]:checked + .radio:before {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/* ===================================================================
+大見出し｜ブルー
+=================================================================== */
+div.title {
+  width: 100%;
+  height: 40px;
+  position: relative;
+  margin: 0 0 20px 10px;
+  padding: 0 8px;
+  color: #fff;
+  background-color: #6588c2;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+}
+div.title h2 {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+div.title span {
+  float: right;
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-weight: normal;
+  padding-top: 2px;
+}
+div.title .icon-group, div.title .icon-edit, div.title .icon-coupon {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  margin: 0 3px 0 0;
+  padding: 0 5px 0 0;
+  float: left;
+  font-size: 20px;
+  font-size: 2rem;
+  color: #fff;
+}
+div.title .icon-edit, div.title .icon-coupon {
+  font-size: 22px;
+  font-size: 2.2rem;
+  padding: 1px 5px 0 0;
+}
+div.title .icon-setting {
+  float: left;
+  margin-right: 6px;
+  font-size: 22px;
+  font-size: 2.2rem;
+  line-height: 160%;
+}
+
+/* ===================================================================
+各種ボタン設定
+=================================================================== */
+.button_large {
+  clear: both;
+  width: 250px;
+  height: 48px;
+  margin: 0 auto 40px;
+  width: 250px;
+  height: 48px;
+  border: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 0px;
+  font-size: 14px;
+  font-size: 1.4rem;
+  color: #fff;
+  text-align: center;
+}
+.button_large:hover {
+  background-color: #6588c2;
+}
+
+.submit_large {
+  width: 250px;
+  margin: 10px auto;
+}
+
+.button_small, .button_small_header {
+  width: 80px;
+  height: 24px;
+  margin: 0 auto 0;
+  display: block;
+  line-height: 190%;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-size: 1.2rem;
+  font-weight: normal;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+}
+.button_small:hover, .button_small_header:hover {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.button_small_header {
+  margin: -26px 15px 0 0;
+  line-height: 200%;
+}
+
+.pink {
+  background-color: #ebc3d9;
+}
+.pink:hover {
+  background-color: #466393;
+}
+
+.blue {
+  background-color: #6588c2;
+}
+.blue:hover {
+  background-color: #466393;
+}
+
+.red {
+  background-color: #e74c3c;
+}
+.red:hover {
+  background-color: #6588c2;
+}
+
+.gray {
+  background-color: #bbbbbb;
+}
+.gray:hover {
+  background-color: #466393;
+}
+
+.green {
+  background-color: #53b300;
+}
+.green:hover {
+  background-color: #466393;
+}
+
+/* ===================================================================
+確認・完了画面
+=================================================================== */
+#infoBox {
+  width: 100%;
+  margin: 0 10px 20px 10px;
+  padding: 30px;
+  background-color: #f8f8f8;
+  border: 1px solid #cecece;
+  color: #333;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+}
+#infoBox ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#infoBox ul li {
+  font-size: 13px;
+  font-size: 1.3rem;
+  line-height: 150%;
+}
+#infoBox ul .name {
+  font-size: 16px;
+  font-size: 1.6rem;
+  margin-bottom: 5px;
+  padding: 0 100px 5px 0;
+  border-bottom: 1px dotted #ccc;
+}
+
+/* ===================================================================
+フッター
+=================================================================== */
+.scroll {
+  width: 32px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  clear: both;
+  background-color: #bbbbbb;
+}
+.scroll a {
+  width: 32px;
+  height: 30px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+.scroll a .icon-scroll {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  display: block;
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+
+footer {
+  width: 100%;
+  height: 80px;
+  margin-top: -12px;
+  text-align: center;
+  background-color: #bbbbbb;
+  clear: both;
+}
+footer p {
+  padding-top: 20px;
+  color: #fff;
+}
