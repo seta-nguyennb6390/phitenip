@@ -1,9 +1,11 @@
 <?php
-use backend\assets\AppAsset;
+
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
+use frontend\assets\AppAsset;
+use frontend\widgets\Alert;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -13,60 +15,42 @@ AppAsset::register($this);
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
-<head>
-    <meta charset="<?= Yii::$app->charset ?>"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-</head>
-<body>
-    <?php $this->beginBody() ?>
-    <div class="wrap">
-        <?php
-            NavBar::begin([
-                'brandLabel' => 'My Company',
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top',
-                ],
-            ]);
-            $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
-            ];
-            if (Yii::$app->user->isGuest) {
-                $menuItems[] = ['label' => 'Login', 'url' => ['/acount/default/login']];
-            } else {
-//                var_dump(Yii::$app->user->identity);
-                $menuItems[] = [
-                    'label' => 'Logout (' . Yii::$app->user->identity->user_email . ')',
-                    'url' => ['/acount/default/logout'],
-                    'linkOptions' => ['data-method' => 'post']
-                ];
-            }
-            echo Nav::widget([
-                'options' => ['class' => 'navbar-nav navbar-right'],
-                'items' => $menuItems,
-            ]);
-            NavBar::end();
-        ?>
+	<head>
+		<meta charset="<?= Yii::$app->charset ?>"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<?= Html::csrfMetaTags() ?>
+		<title><?= Html::encode($this->title) ?></title>
 
-        <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= $content ?>
-        </div>
-    </div>
+		<!-- stylesheet -->
+		<link href="<?= Yii::$app->request->baseUrl; ?>/css/normalize.css" rel="stylesheet" type="text/css">
+		<link href="<?= Yii::$app->request->baseUrl; ?>/css/common.css" rel="stylesheet" type="text/css">
+		<link href="<?= Yii::$app->request->baseUrl; ?>/css/svg.css" rel="stylesheet" type="text/css">
+		<link href="<?= Yii::$app->request->baseUrl; ?>/css/index.css" rel="stylesheet" type="text/css">
+		<link href="<?= Yii::$app->request->baseUrl; ?>/css/jquery.sidr.dark.css" rel="stylesheet" type="text/css">
 
-    <footer class="footer">
-        <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
-        </div>
-    </footer>
-
-    <?php $this->endBody() ?>
-</body>
+		<!-- jQuery -->
+		<script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>/js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>js/jquery.sidr.min.js"></script>
+        <script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>js/common.js"></script>
+		<script type="text/javascript">
+         // ドロワーメニュー
+        $(document).ready(function() {
+          $('.left-menu').sidr({
+             name: 'sidr-left',
+            side: 'left' // By default
+           });
+        });
+        </script>
+		<!--[if lt IE 9]>
+           <script src="<?= Yii::$app->request->baseUrl; ?>js/html5shiv.js"></script>
+        <![endif]-->
+	</head>
+	<body>
+		<?php echo $this->render('//partials/header'); ?>
+		
+		<?= $content ?>
+		
+		<?php echo $this->render('//partials/footer'); ?>
+	</body>
 </html>
 <?php $this->endPage() ?>
