@@ -45,7 +45,7 @@ AppAsset::register($this);
            <script src="<?= Yii::$app->request->baseUrl; ?>js/html5shiv.js"></script>
         <![endif]-->
 	</head>
-	<body>
+	<body id="salon_open">
 		<?php echo $this->render('//partials/header'); ?>
 		
 		<?= $content ?>

@@ -13,8 +13,8 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [
-        'acount' => [
-            'class' => 'app\modules\acount\Acount',
+        'account' => [
+            'class' => 'app\modules\account\Account',
         ],
         'salon' => [
             'class' => 'app\modules\salon\Salon',
