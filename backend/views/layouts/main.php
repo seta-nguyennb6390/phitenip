@@ -14,7 +14,7 @@ AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="ja">
 	<head>
 		<meta charset="<?= Yii::$app->charset ?>"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +25,6 @@ AppAsset::register($this);
 		<link href="<?= Yii::$app->request->baseUrl; ?>/css/normalize.css" rel="stylesheet" type="text/css">
 		<link href="<?= Yii::$app->request->baseUrl; ?>/css/common.css" rel="stylesheet" type="text/css">
 		<link href="<?= Yii::$app->request->baseUrl; ?>/css/svg.css" rel="stylesheet" type="text/css">
-		<link href="<?= Yii::$app->request->baseUrl; ?>/css/index.css" rel="stylesheet" type="text/css">
 		<link href="<?= Yii::$app->request->baseUrl; ?>/css/jquery.sidr.dark.css" rel="stylesheet" type="text/css">
 
 		<!-- jQuery -->

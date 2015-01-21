@@ -1,3 +1,11 @@
+<link href="<?= Yii::$app->request->baseUrl; ?>/css/index.css" rel="stylesheet" type="text/css">
+
+<!-- ============================== パンくずリスト[start] ============================== -->
+<div id="topicpath">
+	<p><span class="icon-topicpath"></span>IPコーナー　岸和田店</p>
+</div><!-- /#topicpath -->
+<!-- ============================== パンくずリスト[end] ============================== -->
+
 <p class="date">2014年9月22日（月）</p>
 
 <div id="wrapper">
