@@ -4,7 +4,7 @@ namespace app\modules\salon\controllers;
 
 use yii\web\Controller;
 
-class DefaultController extends Controller
+class SalonController extends Controller
 {
     public function actionIndex()
     {
