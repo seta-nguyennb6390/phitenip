@@ -1,7 +1,10 @@
 <?php
 
 $params = array_merge(
-        require(__DIR__ . '/../../common/config/params.php'), require(__DIR__ . '/../../common/config/params-local.php'), require(__DIR__ . '/params.php'), require(__DIR__ . '/params-local.php')
+        require(__DIR__ . '/../../common/config/params.php'),
+        require(__DIR__ . '/../../common/config/params-local.php'),
+        require(__DIR__ . '/params.php'),
+        require(__DIR__ . '/params-local.php')
 );
 
 return [
@@ -10,11 +13,11 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [
-//        'staff' => [
-//            'class' => 'app\modules\staff\Staff',
-//        ],
         'acount' => [
             'class' => 'app\modules\acount\Acount',
+        ],
+        'salon' => [
+            'class' => 'app\modules\salon\Salon',
         ],
     ],
     'components' => [
