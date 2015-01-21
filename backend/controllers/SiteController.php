@@ -55,6 +55,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+		Yii::$app->view->title = 'Phiten IP Salon 予約管理システム｜TOPページ';
         return $this->render('index');
     }
 
