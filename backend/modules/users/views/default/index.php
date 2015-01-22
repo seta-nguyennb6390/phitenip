@@ -1,4 +1,5 @@
 <link href="<?= Yii::$app->request->baseUrl; ?>/css/user.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>/js/jquery.clickableTr.js"></script>
 
 <!-- ============================== パンくずリスト[start] ============================== -->
 <div id="topicpath">
@@ -8,8 +9,33 @@
 
 <script type="text/javascript">
 	$('body').attr('id', 'user_index');
+	var url = '<?= Yii::$app->request->url ?>';
 </script>
 
+<script type="text/javascript" src="<?= Yii::$app->homeUrl ?>js/users/list-user.js"></script>
+<script type="text/javascript">
+// 外部ページの読み込み
+	$(window).on("scroll", function (e) {
+		var bottomPos = 100;
+		var scrollHeight = $(document).height();
+		var scrollPosition = $(window).height() + $(window).scrollTop();
+		if (scrollPosition > scrollHeight - bottomPos) { appendFunc();}
+	});
+	var start = <?= $limit ?>;
+	function appendFunc() {
+		if (start == 'max') { return false;}
+		$.ajax({
+			type: 'post', url: url, data: 'action=ajax&page='+start, async: false,
+			beforeSend: function () { $("#loading").show(); },
+			success: function (result) { if(result != 'max'){
+				    $('#wrap').append(result);	
+				}else{ start = 'max';}
+				$("#loading").hide();
+			}
+		});
+		start = start + <?= $limit ?>;
+	}
+</script>
 
 <div id="wrapper">
 
@@ -23,15 +49,12 @@
 	</table>
 	<!-- ============================== ユーザー新規登録[end] ============================== -->
 
-
-
-
 	<!-- ============================== ユーザー検索[start] ============================== -->
 	<table class="search">
 		<tr>
 			<th>ユーザー検索</th>
 			<td>
-				<form action="" method="get" accept-charset="utf-8">
+				<form action="javascript:void(0)" method="get" accept-charset="utf-8">
 					<!-- 会員種別 -->
 					<p>
 						<label for="category">会員種別</label>
@@ -64,9 +87,6 @@
 	</table>
 	<!-- ============================== ユーザー検索[end] ============================== -->
 
-
-
-
 	<!-- ============================== ユーザー一覧[start] ============================== -->
 	<table class="list">
 		<colgroup span="1" class="group"></colgroup>
@@ -78,97 +98,22 @@
 		<colgroup span="1" class="address"></colgroup>
 
 		<thead>
-			<tr>
+			<tr class="hasort">
 				<th>グループ</th>
-				<th>会員番号&nbsp;<a href="#">▲</a><a href="#">▼</a>/ID</th>
-				<th>お名前&nbsp;<a href="#">▲</a><a href="#">▼</a></th>
+				<th title="id">会員番号&nbsp;<a href="#" title="asc">▲</a><a href="#" title="desc">▼</a>/ID</th>
+				<th title="name">お名前&nbsp;<a href="#" title="asc">▲</a><a href="#" title="desc">▼</a></th>
 				<th>会員種別</th>
 				<th>ステータス</th>
-				<th>電話番号&nbsp;<a href="#">▲</a><a href="#">▼</a></th>
+				<th title="phone">電話番号&nbsp;<a href="#" title="asc">▲</a><a href="#" title="desc">▼</a></th>
 				<th>住所</th>
 			</tr>
 		</thead>
 		<tbody id="wrap">
-            <?php if(isset($listAll) && $listAll != NULL){ ?>
-			<?php $stt=0; foreach($listAll as $user){ ?>
-			<tr class="item <?php if($stt % 2 == 0){ echo 'even'; }else{ echo 'odd';} ?>" data-href="user_detail.html">
-				<td class="group"><span class="icon-group"></span></td>
-				<td class="id"><?php echo $user->pos_member_cd; ?><br>ID:<?php echo $user->member_id; ?></td>
-				<td class="name"><span class="icon-<?php if($user->gender == 1){ echo 'male'; }else{ echo 'fmale';} ?>"></span>知多 好子<br><span class="kana">チタ　ヨシコ</span></td>
-				<td class="category">月4回(平日)<br>標準:120分</td>
-				<td clasa="status">1.本会員</td>
-				<td class="tel"><?php echo $user->user_tel; ?></td>
-				<td class="address"><?php echo $user->addr_1; ?></td>
-			</tr>
-			<?php $stt++; } } ?>
-			<tr class="item odd" data-href="user_detail.html">
-				<td class="group"><span class="icon-group"></span></td>
-				<td class="id">0 062709 17212 9<br>ID:2897</td>
-				<td class="name"><span class="icon-female"></span>知多 好子<br><span class="kana">チタ　ヨシコ</span></td>
-				<td class="category">月4回(平日)<br>標準:120分</td>
-				<td clasa="status">1.本会員</td>
-				<td class="tel">0724999999</td>
-				<td class="address">大阪府岸和田市土生町4165-2</td>
-			</tr>
-			<tr class="item odd" data-href="user_detail.html">
-				<td class="group"><span class="icon-group"></span></td>
-				<td class="id">0 062709 17212 9<br>ID:1469</td>
-				<td class="name"><span class="icon-male"></span>知多 安広<br><span class="kana">チタ　ヤスヒロ</span></td>
-				<td class="category">月3回(平日)<br>標準:120分</td>
-				<td clasa="status">1.本会員</td>
-				<td class="tel">0724998888</td>
-				<td class="address">大阪府岸和田市土生町20-3-1</td>
-			</tr>
-			<tr class="item even" data-href="user_detail.html">
-				<td class="group"></td>
-				<td class="id">ID:3491</td>
-				<td class="name"><span class="icon-male"></span>知多 朔太郎<br><span class="kana">チタ　サクタロウ</span></td>
-				<td class="category">【ビジター】</td>
-				<td clasa="status">0.仮会員</td>
-				<td class="tel">0724998888</td>
-				<td class="address">大阪府岸和田市土生町4165-220</td>
-			</tr>
-			<tr class="item odd" data-href="user_detail.html">
-				<td class="group"></td>
-				<td class="id">ID:1469</td>
-				<td class="name"><span class="icon-female"></span>知多 明美<br><span class="kana">チタ　アケミ</span></td>
-				<td class="category">【ビジター】</td>
-				<td clasa="status">0.仮会員</td>
-				<td class="tel">0724998888</td>
-				<td class="address">大阪府岸和田市土生町20</td>
-			</tr>
-			<tr class="item odd" data-href="user_detail.html">
-				<td class="group"></td>
-				<td class="id">ID:1469</td>
-				<td class="name"><span class="icon-female"></span>知多 明美<br><span class="kana">チタ　アケミ</span></td>
-				<td class="category">【ビジター】</td>
-				<td clasa="status">0.仮会員</td>
-				<td class="tel">0724998888</td>
-				<td class="address">大阪府岸和田市土生町20</td>
-			</tr>
-			<tr class="item even" data-href="user_detail.html">
-				<td class="group"><span class="icon-group"></span></td>
-				<td class="id">0 062709 17212 9<br>ID:1469</td>
-				<td class="name"><span class="icon-male"></span>知多 安広<br><span class="kana">チタ　ヤスヒロ</span></td>
-				<td class="category">月3回(平日)<br>標準:120分</td>
-				<td clasa="status">1.本会員</td>
-				<td class="tel">0724998888</td>
-				<td class="address">大阪府岸和田市土生町20-3-1</td>
-			</tr>
-			<tr class="item even" data-href="user_detail.html">
-				<td class="group"><span class="icon-group"></span></td>
-				<td class="id">0 062709 17212 9<br>ID:2897</td>
-				<td class="name"><span class="icon-female"></span>知多 好子<br><span class="kana">チタ　ヨシコ</span></td>
-				<td class="category">月4回(平日)<br>標準:120分</td>
-				<td clasa="status">1.本会員</td>
-				<td class="tel">0724999999</td>
-				<td class="address">大阪府岸和田市土生町4165-2</td>
-			</tr>
-
+			<?php echo $this->render('list_order',['listAll'=>$listAll]); ?>
 		</tbody>
 	</table>
 	<!-- ============================== ユーザー一覧[start] ============================== -->
-
+    <div id="loadingimg" style="text-align: center;margin:10px 0 20px 0"><img id="loading" src="img/icon_loading.gif" alt="loading" style="display:none"  width="29" height="29" class="loading" /></div>
 	<p class="scroll"><a href="#stop"><span class="icon-scroll"></span></a></p>
 
 </div><!-- /#wrapper -->

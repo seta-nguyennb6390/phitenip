@@ -29,8 +29,8 @@ AppAsset::register($this);
 
 		<!-- jQuery -->
 		<script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>/js/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>js/jquery.sidr.min.js"></script>
-        <script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>js/common.js"></script>
+        <script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>/js/jquery.sidr.min.js"></script>
+        <script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>/js/common.js"></script>
 		<script type="text/javascript">
          // ドロワーメニュー
         $(document).ready(function() {

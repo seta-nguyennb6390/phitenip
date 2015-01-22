@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "member".
  * Author Ha Huu Don(donhh6551@seta-asia.com.vn)
- * Date 21/11/2015
+ * Date 21/01/2015
  * 
  * @property integer $member_id
  * @property string $pos_member_cd
@@ -102,9 +102,9 @@ class Member extends \yii\db\ActiveRecord
     }
 	
 	/**
-	 * Function Listusers
-	 * Author Ha Huu Don(donhh6551@seta-asia.com.vn)
-     * Date 21/11/2015
+	 * description: Get list member
+	 * Author: Ha Huu Don(donhh6551@seta-asia.com.vn)
+     * Date: 21/01/2015
 	 */
 	public function listMembers($limit){
 		$listAll = $this->find()
@@ -112,5 +112,32 @@ class Member extends \yii\db\ActiveRecord
         ->all();
 		
 		return $listAll;
+	}
+
+	/**
+	 * description: Get list pagination
+	 * Author: Ha Huu Don(donhh6551@seta-asia.com.vn)
+     * Date: 21/01/2015
+	 */
+	public function listMemberAjax($page, $limit){
+		$total = $this->find()->count();
+		
+		if($page <= $total){
+			$result=Yii::$app->db->createCommand('SELECT * FROM '.$this->tableName().' limit '.$page.','.$limit.'')->queryAll();
+		    
+			return $result;
+		}
+	}
+	
+	/**
+	 * description: order by list member by ajax
+	 * Author: Ha Huu Don(donhh6551@seta-asia.com.vn)
+     * Date: 22/01/2015
+	 */
+	public function orderByMember($data=[], $limit){
+		
+		$result=Yii::$app->db->createCommand('SELECT * FROM '.$this->tableName().' limit 0,'.$data['start'].'')->queryAll();
+		
+		return $result;
 	}
 }
