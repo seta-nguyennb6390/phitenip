@@ -16,8 +16,17 @@ return [
         'acount' => [
             'class' => 'app\modules\acount\Acount',
         ],
+		'users' => [
+            'class' => 'backend\modules\users\User',
+        ]
     ],
     'components' => [
+		'urlManager' => [
+            'baseUrl' => '/',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => []
+        ],
         'user' => [
             'identityClass' => 'common\models\AdminUser',
             'loginUrl' => ['/acount/default/login'],
