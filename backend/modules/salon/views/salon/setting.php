@@ -159,7 +159,7 @@
 			?>
         </li>
     </ul>
-	<?= Html::activeTextInput($model, 'close_time', ['class' => 'input_form', 'style' => 'width:100%;margin-top:10px']); ?>
+	<?= Html::activeTextInput($model, 'open_other', ['class' => 'input_form', 'style' => 'width:100%;margin-top:10px']); ?>
     <br>
 	
 	
