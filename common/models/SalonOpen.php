@@ -3,7 +3,11 @@
 namespace common\models;
 
 use Yii;
-
+use yii\base\NotSupportedException;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
+use common\components\MyActiveRecord;
 /**
  * This is the model class for table "salon_open".
  *
@@ -55,5 +59,14 @@ class SalonOpen extends \yii\db\ActiveRecord
             'reg_datetime' => 'Reg Datetime',
             'upd_datetime' => 'Upd Datetime',
         ];
+    }
+    
+    /*
+     * @description: getMaxDatetime
+     * @since : 22/01/2015
+     * @author Nguyen Binh Nguyen <nguyennb6390@seta-asia.com.vn>
+     */
+    public static function getMaxDatetime($salonId) {
+        return SalonOpen::find()->where(['salon_id' => $salonId])->orderBy('salon_date desc')->one();
     }
 }

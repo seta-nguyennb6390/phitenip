@@ -1,7 +1,10 @@
 <?php
 
 $params = array_merge(
-        require(__DIR__ . '/../../common/config/params.php'), require(__DIR__ . '/../../common/config/params-local.php'), require(__DIR__ . '/params.php'), require(__DIR__ . '/params-local.php')
+        require(__DIR__ . '/../../common/config/params.php'),
+        require(__DIR__ . '/../../common/config/params-local.php'),
+        require(__DIR__ . '/params.php'),
+        require(__DIR__ . '/params-local.php')
 );
 
 return [
@@ -10,17 +13,17 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [
-//        'staff' => [
-//            'class' => 'app\modules\staff\Staff',
-//        ],
-        'acount' => [
-            'class' => 'app\modules\acount\Acount',
+        'account' => [
+            'class' => 'app\modules\account\Account',
+        ],
+        'salon' => [
+            'class' => 'app\modules\salon\Salon',
         ],
     ],
     'components' => [
         'user' => [
             'identityClass' => 'common\models\AdminUser',
-            'loginUrl' => ['/acount/default/login'],
+            'loginUrl' => ['/account/default/login'],
             'enableAutoLogin' => true,
         ],
         'log' => [
@@ -37,4 +40,7 @@ return [
         ],
     ],
     'params' => $params,
+    'aliases' => [
+        '$calendar' => '@vendor/php_calendar/classes',
+    ],
 ];
