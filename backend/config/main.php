@@ -23,7 +23,7 @@ return [
     'components' => [
         'user' => [
             'identityClass' => 'common\models\AdminUser',
-            'loginUrl' => ['/acount/default/login'],
+            'loginUrl' => ['/account/default/login'],
             'enableAutoLogin' => true,
         ],
         'log' => [
@@ -40,4 +40,7 @@ return [
         ],
     ],
     'params' => $params,
+    'aliases' => [
+        '$calendar' => '@vendor/php_calendar/classes',
+    ],
 ];
