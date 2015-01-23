@@ -127,30 +127,30 @@ use yii\widgets\ActiveField;
                             <tr>
                                 <th>1つ目</th>
                                 <td>
-                                    <?= Html::dropDownList('monthSpecifiedDate1', null, \app\modules\salon\controllers\SalonController::$arrayMonth) ?>
+                                    <?= Html::dropDownList('specifiedDate[1][month]', null, \app\modules\salon\controllers\SalonController::$arrayMonth) ?>
                                 </td>
                                 <td>
-                                    <?= Html::dropDownList('daySpecifiedDate1', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
+                                    <?= Html::dropDownList('specifiedDate[1][date]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
                                 </td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>2つ目</th>
                                 <td>
-                                    <?= Html::dropDownList('monthSpecifiedDate2', null, \app\modules\salon\controllers\SalonController::$arrayMonth) ?>
+                                    <?= Html::dropDownList('specifiedDate[2][month]', null, \app\modules\salon\controllers\SalonController::$arrayMonth) ?>
                                 </td>
                                 <td>
-                                    <?= Html::dropDownList('daySpecifiedDate2', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
+                                    <?= Html::dropDownList('specifiedDate[2][date]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
                                 </td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>3つ目</th>
                                 <td>
-                                    <?= Html::dropDownList('monthSpecifiedDate3', null, \app\modules\salon\controllers\SalonController::$arrayMonth) ?>
+                                    <?= Html::dropDownList('specifiedDate[3][month]', null, \app\modules\salon\controllers\SalonController::$arrayMonth) ?>
                                 </td>
                                 <td>
-                                    <?= Html::dropDownList('daySpecifiedDate3', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
+                                    <?= Html::dropDownList('specifiedDate[3][date]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
                                 </td>
                                 <td></td>
                             </tr>
@@ -162,23 +162,23 @@ use yii\widgets\ActiveField;
                             <tr>
                                 <th>1つ目</th>
                                 <td>
-                                    <?= Html::dropDownList('YearSpecialHoliday1[]', null, \app\modules\salon\controllers\SalonController::getArrYear()) ?>
+                                    <?= Html::dropDownList('specialHoliday[1][year][begin]', null, \app\modules\salon\controllers\SalonController::getArrYear()) ?>
                                     <br>
-                                    <?= Html::dropDownList('YearSpecialHoliday1[]', null, \app\modules\salon\controllers\SalonController::getArrYear()) ?>
+                                    <?= Html::dropDownList('specialHoliday[1][year][end]', null, \app\modules\salon\controllers\SalonController::getArrYear()) ?>
                                 </td>
                                 <td>
                                     <?php 
                                     $monthArr = \app\modules\salon\controllers\SalonController::$arrayMonth;
                                     unset($monthArr['every_month']);
                                     ?>
-                                    <?= Html::dropDownList('monthSpecialHoliday1[]', null, $monthArr) ?>
+                                    <?= Html::dropDownList('specialHoliday[1][month][begin]', null, $monthArr) ?>
                                     <br>
-                                    <?= Html::dropDownList('monthSpecialHoliday1[]', null, $monthArr) ?>
+                                    <?= Html::dropDownList('specialHoliday[1][month][end]', null, $monthArr) ?>
                                 </td>
                                 <td>
-                                    <?= Html::dropDownList('daySpecifiedDate1[]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
+                                    <?= Html::dropDownList('specialHoliday[1][day][begin]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
                                     <br>
-                                    <?= Html::dropDownList('daySpecifiedDate1[]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
+                                    <?= Html::dropDownList('specialHoliday[1][day][end]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
                                 </td>
                                 <td>から<br>まで</td>
                             </tr>
@@ -186,19 +186,19 @@ use yii\widgets\ActiveField;
                             <tr>
                                 <th>2つ目</th>
                                 <td>
-                                    <?= Html::dropDownList('YearSpecialHoliday2[]', null, \app\modules\salon\controllers\SalonController::getArrYear()) ?>
+                                    <?= Html::dropDownList('specialHoliday[2][year][begin]', null, \app\modules\salon\controllers\SalonController::getArrYear()) ?>
                                     <br>
-                                    <?= Html::dropDownList('YearSpecialHoliday2[]', null, \app\modules\salon\controllers\SalonController::getArrYear()) ?>
+                                    <?= Html::dropDownList('specialHoliday[2][year][end]', null, \app\modules\salon\controllers\SalonController::getArrYear()) ?>
                                 </td>
                                 <td>
-                                    <?= Html::dropDownList('monthSpecialHoliday2[]', null, $monthArr) ?>
+                                    <?= Html::dropDownList('specialHoliday[2][month][begin]', null, $monthArr) ?>
                                     <br>
-                                    <?= Html::dropDownList('monthSpecialHoliday2[]', null, $monthArr) ?>
+                                    <?= Html::dropDownList('specialHoliday[2][month][end]', null, $monthArr) ?>
                                 </td>
                                 <td>
-                                    <?= Html::dropDownList('daySpecifiedDate2[]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
+                                    <?= Html::dropDownList('specialHoliday[2][day][begin]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
                                     <br>
-                                    <?= Html::dropDownList('daySpecifiedDate2[]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
+                                    <?= Html::dropDownList('specialHoliday[2][day][end]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
                                 </td>
                                 <td>から<br>まで</td>
                             </tr>
@@ -206,19 +206,19 @@ use yii\widgets\ActiveField;
                             <tr>
                                 <th>3つ目</th>
                                 <td>
-                                    <?= Html::dropDownList('YearSpecialHoliday3[]', null, \app\modules\salon\controllers\SalonController::getArrYear()) ?>
+                                    <?= Html::dropDownList('specialHoliday[3][year][begin]', null, \app\modules\salon\controllers\SalonController::getArrYear()) ?>
                                     <br>
-                                    <?= Html::dropDownList('YearSpecialHoliday3[]', null, \app\modules\salon\controllers\SalonController::getArrYear()) ?>
+                                    <?= Html::dropDownList('specialHoliday[3][year][end]', null, \app\modules\salon\controllers\SalonController::getArrYear()) ?>
                                 </td>
                                 <td>
-                                    <?= Html::dropDownList('monthSpecialHoliday3[]', null, $monthArr) ?>
+                                    <?= Html::dropDownList('specialHoliday[3][month][begin]', null, $monthArr) ?>
                                     <br>
-                                    <?= Html::dropDownList('monthSpecialHoliday3[]', null, $monthArr) ?>
+                                    <?= Html::dropDownList('specialHoliday[3][month][end]', null, $monthArr) ?>
                                 </td>
                                 <td>
-                                    <?= Html::dropDownList('daySpecifiedDate3[]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
+                                    <?= Html::dropDownList('specialHoliday[3][day][begin]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
                                     <br>
-                                    <?= Html::dropDownList('daySpecifiedDate3[]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
+                                    <?= Html::dropDownList('specialHoliday[3][day][end]', null, \app\modules\salon\controllers\SalonController::$arrayDay) ?>
                                 </td>
                                 <td>から<br>まで</td>
                             </tr>

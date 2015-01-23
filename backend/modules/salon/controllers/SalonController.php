@@ -10,7 +10,7 @@ use yii\web\Controller;
 use common\models\Salon;
 use common\models\SalonOpen;
 //use yii\php_calendar\classes\Calendar;
-//include '/../php-calendar/classes/calendar.php';
+include '/../php-calendar/classes/calendar.php';
 
 /*
  * SalonController
@@ -118,11 +118,12 @@ class SalonController extends Controller {
         'Sunday' => '日',
     );
     public static $arrayWeekNo = array(
-        'everyWeek' => '毎週',
+        'every_week' => '毎週',
         '1' => '第1',
         '2' => '第2',
         '3' => '第3',
         '4' => '第4',
+        '5' => '第5',
     );
     public static function getArrYear($year = null) {
         $currentYear = date('Y');
@@ -147,7 +148,7 @@ class SalonController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'salon-open'],
+                        'actions' => ['logout', 'index', 'salon-open', 'salon-open-cal'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -172,8 +173,6 @@ class SalonController extends Controller {
      * @author Nguyen Binh Nguyen <nguyennb6390@seta-asia.com.vn>
      */
     public function actionSalonOpen() {
-//        var_dump(\Yii::$app->user->getIdentity()->getAttributes());
-        $salonId = null;
         $userAuth = \Yii::$app->user->getIdentity()->getAttributes();
         $salonId = $userAuth['salon_id'];
         $salonModel = new Salon();
@@ -206,7 +205,39 @@ class SalonController extends Controller {
             ));
             
             $listDateInsert = $this->_createDateRangeArray($datetimePeriodBegin, $datetimePeriodEnd);
-            $this->_getListDateOffByWeek($listDateInsert, $dataPost);
+            
+            //check date off by week
+            $listOffDayOfWeek = array();
+            $listOffSpecialHoliday = array();
+            foreach ($listDateInsert as $key => $value) {
+                if ($this->_checkRepeatOff($value, $dataPost)) {
+                    $listOffDayOfWeek[] = $value;
+                }
+                if ($this->_checkSpecialHoliday($value, $dataPost)) {
+                    $listOffSpecialHoliday[] = $value;
+                }
+            }
+            
+            //insert date
+            foreach ($listDateInsert as $key => $value) {
+                $salonOpenOb = new SalonOpen();
+                $salonOpenOb->setAttribute('salon_id', $salonId);
+                $salonOpenOb->setAttribute('salon_date', $value);
+                $dateType = 1;
+                if (in_array($value, $listOffDayOfWeek) || in_array($value, $listOffSpecialHoliday)) {
+                    $dateType = 9;
+                }
+                $salonOpenOb->setAttribute('date_type', $dateType);
+                $salonOpenOb->setAttribute('open_datetime', $value . ' ' . $dataPost['hour_open'] . '-' . $dataPost['minute_open']);
+                $salonOpenOb->setAttribute('close_datetime', $value . ' ' . $dataPost['hour_open'] . '-' . $dataPost['minute_open']);
+                $salonOpenOb->setAttribute('status', 1);
+                $salonOpenOb->setAttribute('reg_datetime', date('Y-m-d H:i:s'));
+//                $salonOpenOb->setAttribute('upd_datetime', 1);
+
+//                $salonOpenOb->save();
+            }
+            
+            return $this->redirect(['salon-open-calendar']);
         }
         
         return $this->render('salon_open', [
@@ -216,21 +247,81 @@ class SalonController extends Controller {
     }
     
     /*
-     * @description: _settingSalonOpen
+     * @description: _checkRepeatOff
      * @since : 22/01/2015
      * @author Nguyen Binh Nguyen <nguyennb6390@seta-asia.com.vn>
      */
-    private function _getListDateOffByWeek($listDateInsert, $dataPost = array()) {
-        echo date('Y-m-d',strtotime("wednesday +0week January 2015"));
-        var_dump($dataPost);
-        $startYear = date('Y', strtotime($listDateInsert[0]));
-        $endYear = date('Y', strtotime(end($listDateInsert)));
-//        var_dump($startYear);
-//        var_dump($endYear);
+    private function _checkRepeatOff($date, $dataPost = array()) {
+        $isSalonClose = false;
         
         if (isset($dataPost['a_repeat']) && $dataPost['a_repeat'] == 'day_of_week') {
-            
+            $ruleDayOfWeek = $dataPost['dayOfWeek'];
+            $year = date('Y', strtotime($date));
+            foreach ($ruleDayOfWeek as $key => $value) {
+
+                if ($value['month']== 'every_month') {
+                    $strTimeMonth = date('m', strtotime($date));
+                } else {
+                    if (date('m', strtotime($date)) != $value['month']) {
+                        continue;
+                    }
+                    $strTimeMonth = $value['month'];
+                }
+
+                if ($value['week']== 'every_week') {
+                    //compare day of week
+                    if (date('l', strtotime($date)) == $value['day']) {
+                        $isSalonClose = true;
+                        break;
+                    }
+                } else {
+                    if ($date == date('Y-m-d', strtotime( $year. '-' . $strTimeMonth . ' +' . ($value['week'] - 1) . ' week ' .  $value['day']))) {
+                        $isSalonClose = true;
+                        break;
+                    }
+                }
+            }
+        } elseif (isset($dataPost['a_repeat']) && $dataPost['a_repeat'] == 'day_specified') {
+            $ruleSpecifiedDate = $dataPost['specifiedDate'];
+            $year = date('Y', strtotime($date));
+            foreach ($ruleSpecifiedDate as $key => $value) {
+
+                if ($value['month']== 'every_month') {
+                    $strTimeMonth = date('m', strtotime($date));
+                } else {
+                    if (date('m', strtotime($date)) != $value['month']) {
+                        continue;
+                    }
+                    $strTimeMonth = $value['month'];
+                }
+                if (date('Y-m-d', strtotime($date)) == date('Y-m-d', strtotime($year . '-' . $strTimeMonth . '-' . $value['date']))) {
+                    $isSalonClose = true;
+                    break;
+                }
+            }
         }
+        
+        return $isSalonClose;
+    }
+    
+    /*
+     * @description: _checkSpecialHoliday
+     * @since : 23/01/2015
+     * @author Nguyen Binh Nguyen <nguyennb6390@seta-asia.com.vn>
+     */
+    private function _checkSpecialHoliday($date, $dataPost = array()) {
+        $isSalonClose = false;
+
+        foreach ($dataPost['specialHoliday'] as $key => $value) {
+            $beginHoliday = date('Y-m-d', strtotime($value['year']['begin'] . '-' . $value['month']['begin'] . '-' . $value['day']['begin']));
+            $endHoliday = date('Y-m-d', strtotime($value['year']['end'] . '-' . $value['month']['end'] . '-' . $value['day']['end']));
+            if ($date >= $beginHoliday && $date <= $endHoliday) {
+                $isSalonClose = true;
+                break;
+            }
+        }
+
+        return $isSalonClose;
     }
     /*
      * @description: _settingSalonOpen
