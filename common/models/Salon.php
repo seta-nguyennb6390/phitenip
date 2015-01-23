@@ -38,6 +38,10 @@ use Yii;
  */
 class Salon extends \yii\db\ActiveRecord
 {
+//    public $hour_open = null;
+//    public $hour_close = null;
+//    public $minute_open = null;
+//    public $minute_close = null;
     /**
      * @inheritdoc
      */

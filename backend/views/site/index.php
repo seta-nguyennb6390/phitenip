@@ -1,52 +1,108 @@
-<?php
-/* @var $this yii\web\View */
+<p class="date">2014年9月22日（月）</p>
 
-$this->title = 'My Yii Application';
-?>
-<div class="site-index">
+<div id="wrapper">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+	<div id="left_index">
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+		<!-- ============================== お知らせ[start] ============================== -->
+		<div class="title_index">
+			<span class="icon-news"></span><h2>お知らせ</h2>
+		</div><!-- /.title_index -->
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+		<!-- 記事01 -->
+		<div class="newsBox">
+			<p class="date">2014年9月14日</p>
+			<h3>「錦糸町店」「モリシア津田沼店」「横浜西口店」体験クーポンを掲載しました。</h3> 
+			<p class="body">
+				「錦糸町店」「モリシア津田沼店」「横浜西口店」にて、IPルーム初回利用者に限り、
+				今ならご予約時に「ホームページ見たよ」と言うだけで、体験コース1,296円を
+				ご利用いただけます。<br>
+				<br>
+				この機会に、ぜひご利用ください。<br>
+				<br>
+				<a href="" title="">>IPコーナー 錦糸町店</a><br>
+				<a href="" title="">>IPコーナー モリシア津田沼店</a><br>
+				<a href="" title="">>IPコーナー 横浜西口店</a>
+			</p>
+		</div><!-- /.newsBox -->
 
-    <div class="body-content">
+		<!-- 記事02 -->
+		<div class="newsBox">
+			<p class="date">2014年9月14日</p>
+			<h3>「相模原店」体験クーポンを掲載しました。</h3> 
+			<p class="body">
+				IPルーム初回利用者に限り、今ならご予約時に「ホームページ見たよ」と言うだけで、
+				体験コース1,296円をご利用いただけます。
+				<br><br>
+				この機会に、ぜひご利用ください。
+				<br><br>
+				<a href="" title="">>IPルーム 相模原店</a>
+			</p>
+		</div><!-- /.newsBox -->
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+		<!-- 記事03 -->
+		<div class="newsBox">
+			<p class="date">2014年9月14日</p>
+			<h3>11月、12月開催のイベントスケジュールを掲載しました。</h3> 
+			<p class="body">
+				11月、12月開催される<a href="" title="">イベントスケジュール</a>を掲載しました。
+				<br><br>
+				ぜひ、チェックしてお気軽にご参加ください。 
+			</p>
+		</div><!-- /.newsBox -->
+		<!-- ============================== お知らせ[end] ============================== -->
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+	</div><!-- /#left_index -->
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+	<div id="right">
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+		<!-- ============================== 実績[start] ============================== -->
+		<div class="title_index">
+			<span class="icon-status"></span><h2>実績<span>2014年9月14日現在</span></h2>
+		</div><!-- /.title_index -->
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+		<table>
+			<tr>
+				<th class="header">会員数</th>
+				<td>150名</td>
+			</tr>   
+			<tr>
+				<th>内、月1回（平日）</th>
+				<td>30名</td>
+			</tr>   
+			<tr>
+				<th>内、月2回（平日）</th>
+				<td>25名</td>
+			</tr>   
+			<tr>
+				<th>内、月3回（平日）</th>
+				<td>20名</td>
+			</tr>   
+			<tr>
+				<th>内、月4回（平日）</th>
+				<td>10名</td>
+			</tr>   
+			<tr>
+				<th>内、月5回（平日）</th>
+				<td>8名</td>
+			</tr>   
+			<tr>
+				<th>内、月6回（平日）</th>
+				<td>5名</td>
+			</tr>   
+			<tr>
+				<th>内、月7回（平日）</th>
+				<td>3名</td>
+			</tr>   
+			<tr>
+				<th>内、月8回（平日）</th>
+				<td>1名</td>
+			</tr>   
+		</table>
+		<!-- ============================== 実績[end] ============================== -->
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+	</div><!-- /#right -->
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
+	<p class="scroll"><a href="#stop"><span class="icon-scroll"></span></a></p>
 
-    </div>
-</div>
+</div><!-- /#wrapper -->
