@@ -338,7 +338,10 @@ select {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-
+.equip_time .radio.active:before {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
 /* ===================================================================
 大見出し｜ブルー
 =================================================================== */
@@ -581,4 +584,40 @@ footer {
 footer p {
   padding-top: 20px;
   color: #fff;
+}
+
+/* Error box*/
+.errorBox {
+  width: 300px;
+  position: relative;
+  margin: 0 auto 15px;
+  padding: 10px 15px;
+  background-color: #e74c3c;
+  color: #fff;
+  font-size: 13px;
+  font-size: 1.3rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.errorBox:after {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(213, 0, 0, 0);
+  border-top-color: #e74c3c;
+  border-width: 8px;
+  margin-left: -8px;
+}
+.errorBox ul {
+  margin: 0 15px;
+  padding: 0;
+}
+.errorBox ul li {
+  line-height: 150%;
 }

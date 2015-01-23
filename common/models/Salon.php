@@ -38,10 +38,10 @@ use Yii;
  */
 class Salon extends \yii\db\ActiveRecord
 {
-//    public $hour_open = null;
-//    public $hour_close = null;
-//    public $minute_open = null;
-//    public $minute_close = null;
+	public $open_date_hour;
+	public $open_date_min;
+	public $close_date_hour;
+	public $close_date_min;
     /**
      * @inheritdoc
      */
@@ -56,16 +56,17 @@ class Salon extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['salon_group_id', 'pos_shop_cd', 'salon_name', 'salon_kana', 'salon_tel', 'zip_cd', 'jis_code', 'addr_ken', 'addr_shi', 'addr_cho', 'longitude', 'latitude', 'capacity'], 'required'],
-            [['salon_group_id', 'salon_type', 'gender_type', 'reservable_days', 'capacity', 'timelimit_atday', 'status', 'admin_id'], 'integer'],
-            [['longitude', 'latitude'], 'number'],
+            [['salon_group_id', 'pos_shop_cd', 'salon_name', 'salon_kana', 'salon_tel', 'zip_cd', 'jis_code', 'addr_ken', 'addr_shi', 'addr_cho', 'longitude', 'latitude', 'capacity'], 'required', 'message' => '{attribute} が入力されていません。'],
+            [['salon_group_id', 'salon_type', 'gender_type', 'reservable_days', 'capacity', 'timelimit_atday', 'status', 'admin_id'], 'integer', 'message' => '{attribute} は数字を入力してください。'],
+            [['longitude', 'latitude'], 'number', 'message' => '{attribute} は数字を入力してください。'],
             [['open_time', 'close_time', 'reg_datetime', 'upd_datetime'], 'safe'],
             [['memo'], 'string'],
-            [['pos_shop_cd'], 'string', 'max' => 6],
-            [['salon_name', 'salon_kana', 'addr_ken', 'addr_shi', 'addr_cho', 'addr_bldg', 'holiday_other', 'open_other'], 'string', 'max' => 255],
-            [['salon_tel'], 'string', 'max' => 12],
-            [['zip_cd'], 'string', 'max' => 8],
-            [['jis_code'], 'string', 'max' => 5]
+            [['pos_shop_cd'], 'string', 'max' => 6, 'message' => '{attribute} は6以内で入力してください。'],
+            [['salon_name', 'salon_kana', 'addr_ken', 'addr_shi', 'addr_cho', 'addr_bldg', 'holiday_other', 'open_other'], 'string', 'max' => 255, 'message' => '{attribute} は255以内で入力してください。'],
+            [['salon_tel'], 'string', 'max' => 12, 'message' => '{attribute} は12以内で入力してください。'],
+            [['zip_cd'], 'string', 'max' => 8, 'message' => '{attribute} は8以内で入力してください。'],
+            [['jis_code'], 'string', 'max' => 5, 'message' => '{attribute} は5以内で入力してください。'],
+			[['close_time'], 'validateCloseDateField'],
         ];
     }
 
@@ -104,5 +105,11 @@ class Salon extends \yii\db\ActiveRecord
             'upd_datetime' => 'Upd Datetime',
             'memo' => 'Memo',
         ];
+    }
+	
+	 public function validateCloseDateField($attribute) {       
+		if($this->close_time < $this->open_time) {
+		 $this->addError($attribute, '終了時間は開始時間より先の日付を入力してください。');
+		} 
     }
 }

@@ -5,28 +5,27 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "facility".
+ * This is the model class for table "salon_membertype_facility".
  *
+ * @property integer $salon_membertype_facility_id
+ * @property integer $salon_membertype_id
+ * @property integer $salon_id
  * @property integer $facility_id
- * @property string $facility_name
- * @property string $facility_kana
- * @property string $facility_type
- * @property string $facility_image
- * @property string $description
+ * @property integer $max_usage_time
  * @property integer $status
  * @property integer $admin_id
  * @property string $reg_datetime
  * @property string $upd_datetime
  * @property string $memo
  */
-class Facility extends \yii\db\ActiveRecord
+class SalonMembertypeFacility extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'facility';
+        return 'salon_membertype_facility';
     }
 
     /**
@@ -35,11 +34,10 @@ class Facility extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['facility_name', 'facility_kana'], 'required'],
-            [['description', 'memo'], 'string'],
-            [['status', 'admin_id'], 'integer'],
+            [['salon_membertype_id', 'salon_id', 'facility_id', 'max_usage_time'], 'required'],
+            [['salon_membertype_id', 'salon_id', 'facility_id', 'max_usage_time', 'status', 'admin_id'], 'integer'],
             [['reg_datetime', 'upd_datetime'], 'safe'],
-            [['facility_name', 'facility_kana', 'facility_type', 'facility_image'], 'string', 'max' => 255]
+            [['memo'], 'string']
         ];
     }
 
@@ -49,12 +47,11 @@ class Facility extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'salon_membertype_facility_id' => 'Salon Membertype Facility ID',
+            'salon_membertype_id' => 'Salon Membertype ID',
+            'salon_id' => 'Salon ID',
             'facility_id' => 'Facility ID',
-            'facility_name' => 'Facility Name',
-            'facility_kana' => 'Facility Kana',
-            'facility_type' => 'Facility Type',
-            'facility_image' => 'Facility Image',
-            'description' => 'Description',
+            'max_usage_time' => 'Max Usage Time',
             'status' => 'Status',
             'admin_id' => 'Admin ID',
             'reg_datetime' => 'Reg Datetime',
