@@ -3,7 +3,11 @@
 namespace common\models;
 
 use Yii;
-
+use yii\base\NotSupportedException;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
+use common\components\MyActiveRecord;
 /**
  * This is the model class for table "salon_open".
  *
@@ -14,10 +18,8 @@ use Yii;
  * @property string $open_datetime
  * @property string $close_datetime
  * @property integer $status
- * @property integer $admin_id
  * @property string $reg_datetime
  * @property string $upd_datetime
- * @property string $memo
  */
 class SalonOpen extends \yii\db\ActiveRecord
 {
@@ -36,9 +38,8 @@ class SalonOpen extends \yii\db\ActiveRecord
     {
         return [
             [['salon_id', 'salon_date', 'date_type', 'open_datetime', 'close_datetime'], 'required'],
-            [['salon_id', 'date_type', 'status', 'admin_id'], 'integer'],
-            [['salon_date', 'open_datetime', 'close_datetime', 'reg_datetime', 'upd_datetime'], 'safe'],
-            [['memo'], 'string']
+            [['salon_id', 'date_type', 'status'], 'integer'],
+            [['salon_date', 'open_datetime', 'close_datetime', 'reg_datetime', 'upd_datetime'], 'safe']
         ];
     }
 
@@ -55,10 +56,17 @@ class SalonOpen extends \yii\db\ActiveRecord
             'open_datetime' => 'Open Datetime',
             'close_datetime' => 'Close Datetime',
             'status' => 'Status',
-            'admin_id' => 'Admin ID',
             'reg_datetime' => 'Reg Datetime',
             'upd_datetime' => 'Upd Datetime',
-            'memo' => 'Memo',
         ];
+    }
+    
+    /*
+     * @description: getMaxDatetime
+     * @since : 22/01/2015
+     * @author Nguyen Binh Nguyen <nguyennb6390@seta-asia.com.vn>
+     */
+    public static function getMaxDatetime($salonId) {
+        return SalonOpen::find()->where(['salon_id' => $salonId])->orderBy('salon_date desc')->one();
     }
 }
