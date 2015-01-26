@@ -78,4 +78,17 @@ class SalonMembertype extends \yii\db\ActiveRecord
             'memo' => 'Memo',
         ];
     }
+	
+	/*
+	* Get all salon membertype by salon id
+	* 
+	* @since : 21/01/2015
+	* @author Can Tuan Anh <anhct6285@seta-asia.com.vn>
+	*/
+	
+	public function  getAllSalonMembertypeBySalonId($salonId) {
+		return $this->find()
+                ->where(['salon_id' => $salonId, 'status' => 1])
+                ->all();
+	}
 }

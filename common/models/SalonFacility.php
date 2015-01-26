@@ -74,4 +74,20 @@ class SalonFacility extends \yii\db\ActiveRecord
             'memo' => 'Memo',
         ];
     }
+	
+	/*
+	* Get sumary salon facility by salon id
+	* 
+	* @since : 21/01/2015
+	* @author Can Tuan Anh <anhct6285@seta-asia.com.vn>
+	*/
+	
+	public function  getSummarySalonFacilityBySalonId($salonId) {
+		return (new \yii\db\Query())
+                ->select('COUNT(*) AS cnt, facility_id, salon_facility_name')
+                ->from('salon_facility')
+                ->where(['salon_id' => $salonId, 'status' => 1])
+                ->groupBy('facility_id')
+                ->all();
+	}
 }

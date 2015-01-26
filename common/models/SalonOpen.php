@@ -69,4 +69,18 @@ class SalonOpen extends \yii\db\ActiveRecord
     public static function getMaxDatetime($salonId) {
         return SalonOpen::find()->where(['salon_id' => $salonId])->orderBy('salon_date desc')->one();
     }
+	
+	/*
+	* Get first record Salon Open by salon_id
+	* 
+	* @since : 21/01/2015
+	* @author Can Tuan Anh <anhct6285@seta-asia.com.vn>
+	*/
+	
+	public function  getFirstSalonOpenBySalonId($salonId) {
+		return $this->find()
+				->where(['salon_id' => $salonId, 'status' => 1])
+				->orderBy(['salon_date' => SORT_DESC])
+				->one();
+	}
 }

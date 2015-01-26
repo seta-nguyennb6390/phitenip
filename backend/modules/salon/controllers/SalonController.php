@@ -393,11 +393,12 @@ class SalonController extends Controller {
         ]);
     }
     
-        /*
-     * @description: SalonOpen
-     * @since : 21/01/2015
-     * @author Nguyen Binh Nguyen <nguyennb6390@seta-asia.com.vn>
-     */
+	/*
+	* Salon Setting
+	* 
+	* @since : 21/01/2015
+	* @author Can Tuan Anh <anhct6285@seta-asia.com.vn>
+	*/
 
     public function actionSetting() {
         $request = Yii::$app->request;
@@ -405,10 +406,8 @@ class SalonController extends Controller {
         $salonId = $userAuth['salon_id'];
         $model = Salon::findOne($salonId);
         //get salon open
-        $openDate = SalonOpen::find()
-                ->where(['salon_id' => $salonId, 'status' => 1])
-                ->orderBy(['salon_date' => SORT_DESC])
-                ->one();
+		$salonOpen = new \common\models\SalonOpen();
+        $openDate = $salonOpen->getFirstSalonOpenBySalonId($salonId);
 
         $data['salon_open'] = '';
         if ($openDate) {
@@ -416,12 +415,8 @@ class SalonController extends Controller {
         }
 
         //get salon facility	
-        $salonFac = (new \yii\db\Query())
-                ->select('COUNT(*) AS cnt, facility_id, salon_facility_name')
-                ->from('salon_facility')
-                ->where(['salon_id' => $salonId, 'status' => 1])
-                ->groupBy('facility_id')
-                ->all();
+		$salonFacility = new \common\models\SalonFacility();
+        $salonFac = $salonFacility->getSummarySalonFacilityBySalonId($salonId);
 
         $salonFacStr = '';
         foreach ($salonFac as $value) {
@@ -431,9 +426,8 @@ class SalonController extends Controller {
         $data['salon_facility'] = substr($salonFacStr, 0, -1);
 
         //get salon membertype
-        $salonMebertype = SalonMembertype::find()
-                ->where(['salon_id' => $salonId, 'status' => 1])
-                ->all();
+		$salonMembertype = new \common\models\SalonMembertype();
+        $salonMebertype = $salonMembertype->getAllSalonMembertypeBySalonId($salonId);
 
         $salonMebertypeStr = '';
         foreach ($salonMebertype as $key => $value) {

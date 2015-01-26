@@ -9,6 +9,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+	'language' => 'jp',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
@@ -19,6 +20,7 @@ return [
         'salon' => [
             'class' => 'app\modules\salon\Salon',
         ],
+		'gii' => 'yii\gii\Module',
     ],
     'components' => [
         'user' => [
@@ -38,6 +40,19 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+		'i18n' => [
+			'translations' => [
+				'*' => [
+					'class' => 'yii\i18n\PhpMessageSource',
+					'basePath' => '@app/messages',
+					'sourceLanguage' => 'jp',
+					'fileMap' => [
+						'app' => 'app.php',
+						'app/error' => 'error.php',
+					],
+				],
+			],
+		],
     ],
     'params' => $params,
     'aliases' => [
