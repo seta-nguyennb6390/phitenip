@@ -1,24 +1,29 @@
 <?php
 
 $params = array_merge(
-        require(__DIR__ . '/../../common/config/params.php'), require(__DIR__ . '/../../common/config/params-local.php'), require(__DIR__ . '/params.php'), require(__DIR__ . '/params-local.php')
+        require(__DIR__ . '/../../common/config/params.php'),
+        require(__DIR__ . '/../../common/config/params-local.php'),
+        require(__DIR__ . '/params.php'),
+        require(__DIR__ . '/params-local.php')
 );
 
 return [
     'id' => 'app-backend',
+	'language' => 'jp',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [
-//        'staff' => [
-//            'class' => 'app\modules\staff\Staff',
-//        ],
-        'acount' => [
-            'class' => 'app\modules\acount\Acount',
+        'account' => [
+            'class' => 'app\modules\account\Account',
         ],
 		'users' => [
             'class' => 'backend\modules\users\User',
-        ]
+        ],
+        'salon' => [
+            'class' => 'app\modules\salon\Salon',
+        ],
+		'gii' => 'yii\gii\Module',
     ],
     'components' => [
 		'urlManager' => [
@@ -29,7 +34,7 @@ return [
         ],
         'user' => [
             'identityClass' => 'common\models\AdminUser',
-            'loginUrl' => ['/acount/default/login'],
+            'loginUrl' => ['/account/default/login'],
             'enableAutoLogin' => true,
         ],
         'log' => [
@@ -44,6 +49,22 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+		'i18n' => [
+			'translations' => [
+				'*' => [
+					'class' => 'yii\i18n\PhpMessageSource',
+					'basePath' => '@app/messages',
+					'sourceLanguage' => 'jp',
+					'fileMap' => [
+						'app' => 'app.php',
+						'app/error' => 'error.php',
+					],
+				],
+			],
+		],
     ],
     'params' => $params,
+    'aliases' => [
+        '$calendar' => '@vendor/php_calendar/classes',
+    ],
 ];
