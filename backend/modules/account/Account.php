@@ -2,14 +2,11 @@
 
 namespace app\modules\account;
 
-class Account extends \yii\base\Module
-{
-    public $controllerNamespace = 'app\modules\account\controllers';
+class Account extends \yii\base\Module {
 
-    public function init()
-    {
-        parent::init();
+	public $controllerNamespace = 'app\modules\account\controllers';
 
-        // custom initialization code goes here
-    }
+	public function init() {
+		parent::init();
+	}
 }

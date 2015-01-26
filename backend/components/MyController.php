@@ -5,11 +5,12 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use backend\components\MyController;
 
 class MyController extends Controller
 {
-    public function MyBehaviors(){}    
-    
+    public function MyBehaviors(){}
+
     public function behaviors()
     {
         $defaultAccessRules = [
@@ -21,7 +22,7 @@ class MyController extends Controller
                         'allow' => true,
                     ],
                     [
-                        //'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -30,7 +31,7 @@ class MyController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+//                    'logout' => ['post'],
                 ],
             ],
         ];

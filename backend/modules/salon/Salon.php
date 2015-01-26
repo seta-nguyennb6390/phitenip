@@ -2,14 +2,14 @@
 
 namespace app\modules\salon;
 
-class Salon extends \yii\base\Module
-{
-    public $controllerNamespace = 'app\modules\salon\controllers';
+class Salon extends \yii\base\Module {
 
-    public function init()
-    {
-        parent::init();
+	public $controllerNamespace = 'app\modules\salon\controllers';
 
-        // custom initialization code goes here
-    }
+	public function init() {
+		parent::init();
+
+		// custom initialization code goes here
+	}
+
 }

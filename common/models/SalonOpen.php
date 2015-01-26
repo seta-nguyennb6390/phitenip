@@ -8,6 +8,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use common\components\MyActiveRecord;
+
 /**
  * This is the model class for table "salon_open".
  *
@@ -21,56 +22,160 @@ use common\components\MyActiveRecord;
  * @property string $reg_datetime
  * @property string $upd_datetime
  */
-class SalonOpen extends \yii\db\ActiveRecord
-{
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'salon_open';
-    }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['salon_id', 'salon_date', 'date_type', 'open_datetime', 'close_datetime'], 'required'],
-            [['salon_id', 'date_type', 'status'], 'integer'],
-            [['salon_date', 'open_datetime', 'close_datetime', 'reg_datetime', 'upd_datetime'], 'safe']
-        ];
-    }
+class SalonOpen extends \yii\db\ActiveRecord {
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'salon_open_id' => 'Salon Open ID',
-            'salon_id' => 'Salon ID',
-            'salon_date' => 'Salon Date',
-            'date_type' => 'Date Type',
-            'open_datetime' => 'Open Datetime',
-            'close_datetime' => 'Close Datetime',
-            'status' => 'Status',
-            'reg_datetime' => 'Reg Datetime',
-            'upd_datetime' => 'Upd Datetime',
-        ];
-    }
-    
-    /*
-     * @description: getMaxDatetime
-     * @since : 22/01/2015
-     * @author Nguyen Binh Nguyen <nguyennb6390@seta-asia.com.vn>
-     */
-    public static function getMaxDatetime($salonId) {
-        return SalonOpen::find()->where(['salon_id' => $salonId])->orderBy('salon_date desc')->one();
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName() {
+		return 'salon_open';
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function rules() {
+		return [
+			[['salon_id', 'salon_date', 'date_type', 'open_datetime', 'close_datetime'], 'required'],
+			[['salon_id', 'date_type', 'status'], 'integer'],
+			[['salon_date', 'open_datetime', 'close_datetime', 'reg_datetime', 'upd_datetime'], 'safe']
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels() {
+		return [
+			'salon_open_id' => 'Salon Open ID',
+			'salon_id' => 'Salon ID',
+			'salon_date' => 'Salon Date',
+			'date_type' => 'Date Type',
+			'open_datetime' => 'Open Datetime',
+			'close_datetime' => 'Close Datetime',
+			'status' => 'Status',
+			'reg_datetime' => 'Reg Datetime',
+			'upd_datetime' => 'Upd Datetime',
+		];
+	}
+
+	/*
+	 * getMaxDatetime
+	 * @author Nguyen Binh Nguyen <nguyennb6390@seta-asia.com.vn>
+	 * @param $salonId int
+	 * @return object
+	 */
+
+	public static function getMaxDatetime($salonId) {
+		return SalonOpen::find()->where(['salon_id' => $salonId])->orderBy('salon_date desc')->one();
+	}
+
+	/*
+	 * createDateRangeArray
+	 * @param $strDateFrom format ('Y-m-d')
+	 * @param $strDateTo format ('Y-m-d')
+	 * @author Nguyen Binh Nguyen <nguyennb6390@seta-asia.com.vn>
+	 */
+	public static function createDateRangeArray($strDateFrom, $strDateTo) {
+		$aryRange = array();
+
+		$iDateFrom = mktime(1, 0, 0, substr($strDateFrom, 5, 2), substr($strDateFrom, 8, 2), substr($strDateFrom, 0, 4));
+		$iDateTo = mktime(1, 0, 0, substr($strDateTo, 5, 2), substr($strDateTo, 8, 2), substr($strDateTo, 0, 4));
+
+		if ($iDateTo >= $iDateFrom) {
+			array_push($aryRange, date('Y-m-d', $iDateFrom)); // first entry
+
+			while ($iDateFrom < $iDateTo) {
+				$iDateFrom+=86400; // add 24 hours
+				array_push($aryRange, date('Y-m-d', $iDateFrom));
+			}
+		}
+		return $aryRange;
+	}
+	
 	
 	/*
+	 * checkRepeatOff
+	 * @param $date (2015-01-24)
+	 * @param $dataPost array data request by method post
+	 * @author Nguyen Binh Nguyen <nguyennb6390@seta-asia.com.vn>
+	 */
+	public static function checkRepeatOff($date, $dataPost = array()) {
+		$isSalonClose = false;
+
+		if (isset($dataPost['a_repeat']) && $dataPost['a_repeat'] == 'day_of_week') {
+			$ruleDayOfWeek = $dataPost['dayOfWeek'];
+			$year = date('Y', strtotime($date));
+			foreach ($ruleDayOfWeek as $key => $value) {
+
+				if ($value['month'] == 'every_month') {
+					$strTimeMonth = date('m', strtotime($date));
+				} else {
+					if (date('m', strtotime($date)) != $value['month']) {
+						continue;
+					}
+					$strTimeMonth = $value['month'];
+				}
+
+				if ($value['week'] == 'every_week') {
+					//compare day of week
+					if (date('l', strtotime($date)) == $value['day']) {
+						$isSalonClose = true;
+						break;
+					}
+				} else {
+					if ($date == date('Y-m-d', strtotime($year . '-' . $strTimeMonth . ' +' . ($value['week'] - 1) . ' week ' . $value['day']))) {
+						$isSalonClose = true;
+						break;
+					}
+				}
+			}
+		} elseif (isset($dataPost['a_repeat']) && $dataPost['a_repeat'] == 'day_specified') {
+			$ruleSpecifiedDate = $dataPost['specifiedDate'];
+			$year = date('Y', strtotime($date));
+			foreach ($ruleSpecifiedDate as $key => $value) {
+
+				if ($value['month'] == 'every_month') {
+					$strTimeMonth = date('m', strtotime($date));
+				} else {
+					if (date('m', strtotime($date)) != $value['month']) {
+						continue;
+					}
+					$strTimeMonth = $value['month'];
+				}
+				if (date('Y-m-d', strtotime($date)) == date('Y-m-d', strtotime($year . '-' . $strTimeMonth . '-' . $value['date']))) {
+					$isSalonClose = true;
+					break;
+				}
+			}
+		}
+
+		return $isSalonClose;
+	}
+
+	/*
+	 * checkSpecialHoliday
+	 * @param $date (2015-01-24), 
+	 * @param $dataPost array data request by method post
+	 * @author Nguyen Binh Nguyen <nguyennb6390@seta-asia.com.vn>
+	 */
+	public static function checkSpecialHoliday($date, $dataPost = array()) {
+		$isSalonClose = false;
+
+		foreach ($dataPost['specialHoliday'] as $key => $value) {
+			$beginHoliday = date('Y-m-d', strtotime($value['year']['begin'] . '-' . $value['month']['begin'] . '-' . $value['day']['begin']));
+			$endHoliday = date('Y-m-d', strtotime($value['year']['end'] . '-' . $value['month']['end'] . '-' . $value['day']['end']));
+			if ($date >= $beginHoliday && $date <= $endHoliday) {
+				$isSalonClose = true;
+				break;
+			}
+		}
+
+		return $isSalonClose;
+	}
+	
+		/*
 	* Get first record Salon Open by salon_id
 	* 
 	* @since : 21/01/2015

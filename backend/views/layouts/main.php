@@ -33,13 +33,13 @@ AppAsset::register($this);
         <script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>/js/jquery.sidr.min.js"></script>
         <script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>/js/common.js"></script>
 		<script type="text/javascript">
-         // ドロワーメニュー
-        $(document).ready(function() {
-          $('.left-menu').sidr({
-             name: 'sidr-left',
-            side: 'left' // By default
-           });
-        });
+			// ドロワーメニュー
+			$(document).ready(function() {
+				$('.left-menu').sidr({
+					name: 'sidr-left',
+					side: 'left' // By default
+				});
+			});
         </script>
 		<!--[if lt IE 9]>
            <script src="<?= Yii::$app->request->baseUrl; ?>js/html5shiv.js"></script>
@@ -47,9 +47,9 @@ AppAsset::register($this);
 	</head>
 	<body id="salon_open">
 		<?php echo $this->render('//partials/header'); ?>
-		
+
 		<?= $content ?>
-		
+
 		<?php echo $this->render('//partials/footer'); ?>
 	</body>
 </html>

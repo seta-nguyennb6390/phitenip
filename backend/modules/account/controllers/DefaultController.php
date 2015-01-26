@@ -11,81 +11,60 @@ use backend\components\MyController;
 
 class DefaultController extends MyController {
 
-    /**
-     * @inheritdoc
-     */
-    public function MyBehaviors() {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                ],
-            ],
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function MyBehaviors() {
+		return [
+			'verbs' => [
+				'class' => VerbFilter::className(),
+				'actions' => [
+					'delete' => ['post'],
+				],
+			],
+		];
+	}
 
-    /* public function behaviors()
-      {
-      return [
-      'access' => [
-      'class' => AccessControl::className(),
-      'rules' => [
-      [
-      'actions' => ['login', 'error'],
-      'allow' => true,
-      ],
-      [
-      'actions' => ['logout', 'index'],
-      'allow' => true,
-      'roles' => ['@'],
-      ],
-      ],
-      ],
-      'verbs' => [
-      'class' => VerbFilter::className(),
-      'actions' => [
-      'logout' => ['post'],
-      ],
-      ],
-      ];
-      } */
+	public function actions() {
+		return [
+			'error' => [
+				'class' => 'yii\web\ErrorAction',
+			],
+		];
+	}
 
-    public function actions() {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-        ];
-    }
+	/**
+	 * Get login
+	 * 
+	 * @author Nguyen Binh Nguyen <nguyennb6390@seta-asia.com.vn>
+	 * @return object render view
+	 */
+	public function actionLogin() {
+		$this->layout = false;
 
-    public function actionIndex() {
-        return $this->render('index');
-    }
+		if (!\Yii::$app->user->isGuest) {
+			return $this->goHome();
+		}
 
-    public function actionLogin() {
-        $this->layout = false;
+		$model = new LoginForm();
+		if ($model->load(Yii::$app->request->post()) && $model->login()) {
+			return $this->goBack();
+		} else {
+			return $this->render('login', [
+						'model' => $model,
+			]);
+		}
+	}
 
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
+	/**
+	 * Get logout
+	 * @author Nguyen Binh Nguyen <nguyennb6390@seta-asia.com.vn>
+	 * @return redirect
+	 */
+	public function actionLogout() {
+		Yii::$app->user->logout();
 
-        $model = new LoginForm();
-       // $model->username = '';
-//        $model->password = '';
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-            return $this->render('login', [
-                        'model' => $model,
-            ]);
-        }
-    }
-
-    public function actionLogout() {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
+		return $this->goHome();
+	}
 
 }
