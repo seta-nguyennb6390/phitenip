@@ -109,7 +109,7 @@ class Salon extends \yii\db\ActiveRecord
 	
 	 public function validateCloseDateField($attribute) {       
 		if($this->close_time < $this->open_time) {
-		 $this->addError($attribute, '終了時間は開始時間より先の日付を入力してください。');
+		 $this->addError($attribute, \Yii::t('app', 'validation open date greate than close date'));
 		} 
     }
 }
