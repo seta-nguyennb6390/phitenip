@@ -19,13 +19,20 @@
 		var bottomPos = 100;
 		var scrollHeight = $(document).height();
 		var scrollPosition = $(window).height() + $(window).scrollTop();
-		if (scrollPosition > scrollHeight - bottomPos) { appendFunc();}
+		if (scrollPosition > scrollHeight - bottomPos) { 
+			//appendFunc();
+		}
 	});
 	var start = <?= $limit ?>;
 	function appendFunc() {
 		if (start == 'max') { return false;}
+		sort = $(this).attr('title');
+		type = $(this).parent().attr('title');
+		total = $('tbody tr[data-href]').length;
+		member = $('#category').val();
+		status = $('#status').val();
 		$.ajax({
-			type: 'post', url: url, data: 'action=ajax&page='+start, async: false,
+			type: 'post', url: url, data: 'action=ajax&page='+start+'&sort='+sort+'&type='+type+'&total='+total+'&member='+member+'&status='+status, async: false,
 			beforeSend: function () { $("#loading").show(); },
 			success: function (result) { if(result != 'max'){
 				    $('#wrap').append(result);	
@@ -60,12 +67,10 @@
 						<label for="category">会員種別</label>
 						<select id="category" class="pulldown" name="category">
 							<option value="" selected>選択して下さい</option>
-							<option value="1">月1回（平日）</option>
-							<option value="2">月2回（平日）</option>
-							<option value="3">月3回（平日）</option>
-							<option value="4">月4回（平日）</option>
-							<option value="5">月5回（平日）</option>
-							<option value="visitor">ビジター</option>
+					        <?php if(isset($membertype)){ ?>
+							<?php foreach($membertype as $memtype){ ?>
+							<option value="<?php echo $memtype['membertype_name']; ?>"><?php echo $memtype['membertype_name']; ?></option>
+							<?php } } ?>
 						</select>
 					</p>
 					<!-- ステータス -->
@@ -73,8 +78,10 @@
 						<label for="status">ステータス</label>
 						<select id="status" class="pulldown" name="status">
 							<option value="" selected>選択して下さい</option>
-							<option value="1">1.本会員</option>
 							<option value="0">0.仮会員</option>
+							<option value="1">1.本会員</option>
+							<option value="2">2.休会会員</option>
+							<option value="9">9.退会済み</option>
 						</select>
 					</p>
 					<!-- 検索ボタン -->

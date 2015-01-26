@@ -35,11 +35,18 @@ class DefaultController extends Controller {
 		Yii::$app->view->title = 'Phiten IP Salon 予約管理システム｜会員管理';
 		$model = new \common\models\Member();
 		$limit = 10;
-		
+
 		//Ajax pagination
 		if (isset($_POST['action']) && $_POST['action'] == 'ajax') {
 			$page = $_POST['page'];
-			$listMem = $model->listMemberAjax($page, $limit);
+			$value = [
+				'sort' => 'asc',
+				'type' => 'id',
+				'start' => $_POST['total'],
+				'member' => $_POST['member'],
+		        'status' => $_POST['status']
+			];
+			$listMem = $this->ActionOrderBy($value, $limit, $page);
 			if ($listMem) {
 				$value = $this->renderPartial('list_order', ['listAll' => $listMem]);
 			} else {
@@ -50,31 +57,38 @@ class DefaultController extends Controller {
 		//Sort by
 		if (isset($_POST['flag']) && $_POST['flag'] == 'sort') {
 			$value = [
-				'sort'=>$_POST['sort'],
-				'type'=>$_POST['type'],
-				'start'=>($_POST['total'])
+				'sort' => $_POST['sort'],
+				'type' => $_POST['type'],
+				'start' => $_POST['total'],
+				'member' => $_POST['member'],
+		        'status' => $_POST['status']
 			];
             $listAll = $this->ActionOrderBy($value, $limit);
-
 			if($listAll){
 				$val = $this->renderPartial('list_order', ['listAll' => $listAll]);
 			}else{
-				$val = "max";
+				$val = "";
 			}
 			echo $val;  return FALSE;
 		}
 		//Ssearch
 		if (isset($_POST['flag']) && $_POST['flag'] == 'search') {
 			$value = [
-				'member'=>$_POST['member'],
-				'status'=>$_POST['status'],
+				'sort' => 'asc',
+				'type' => 'id',
+				'start' => $limit,
+				'member' => $_POST['member'],
+		        'status' => $_POST['status']
 			];
-			echo "<pre>";
-			print_r($value);
-			echo "</pre>";
-			
-			return FALSE;
+			$listAll = $this->ActionOrderBy($value, $limit);
+			if ($listAll) {
+				$value = $this->renderPartial('list_order', ['listAll' => $listAll]);
+			} else {
+				$value = '';
+			}
+			echo $value; return FALSE;
 		}
+		$data['membertype'] = $model->getMemberTypeName();
 		$data['listAll'] = $model->listMembers($limit);
 		$data['model'] = $model;
 		$data['limit'] = $limit;
@@ -88,7 +102,7 @@ class DefaultController extends Controller {
 	 * @author Ha Huu Don <donhh6551@setacinq.com.vn>
 	 * @date: 22/01/2014
 	 */
-	public function ActionOrderBy($data=array(), $limit){
+	public function ActionOrderBy($data=array(), $limit, $page=NULL){
 		if($data['sort'] == NULL || $data['type'] == NULL){
 			return FALSE;
 		}
@@ -102,7 +116,7 @@ class DefaultController extends Controller {
 		
 		$model = new \common\models\Member();
 		
-		$listAll =  $model->orderByMember($data, $limit);
+		$listAll =  $model->listMemberAjaxSearch($data, $limit, $page=NULL);
 		//return $listAll; die();
 		$array = [];
 		if($listAll){
