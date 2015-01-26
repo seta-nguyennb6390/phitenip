@@ -19,10 +19,10 @@
 					echo 'female';
 				}
 				?>"></span><?php echo $user['user_name']; ?><br><span class="kana"><?php echo $user['user_kana']; ?></span></td>
-			<td class="category">月4回(平日)<br>標準:120分</td>
-			<td clasa="status">1.本会員</td>
+			<td class="category"><?php echo $user['membertype_name']; ?><br>標準:<?php echo $user['timelimit_atday']; ?>分</td>
+			<td clasa="status"><?php echo $user['status']; ?>.本会員</td>
 			<td class="tel"><?php echo $user['user_tel']; ?></td>
-			<td class="address"><?php echo $user['addr_1']; ?></td>
+			<td class="address"><?php echo $user['addr_1'].' '.$user['addr_2'].' '.$user['addr_3']; ?></td>
 		</tr>
 		<?php
 		$stt++;

@@ -107,28 +107,58 @@ class Member extends \yii\db\ActiveRecord
      * Date: 21/01/2015
 	 */
 	public function listMembers($limit){
-		$listAll = $this->find()
-        ->limit($limit)
-        ->all();
-		
+		$listAll = Yii::$app->db->createCommand('SELECT * FROM '.$this->tableName().' '
+				. 'INNER JOIN salon_membertype ON '.$this->tableName().'.salon_membertype_id = salon_membertype.salon_membertype_id'
+				. ' limit '.$limit.'')->queryAll();
 		return $listAll;
 	}
 
+	/**
+	 * description: Get list Member type name for search
+	 * Author: Ha Huu Don(donhh6551@seta-asia.com.vn)
+     * Date: 26/01/2015
+	 */
+	public function getMemberTypeName(){
+		$result = Yii::$app->db->createCommand('SELECT DISTINCT membertype_name FROM salon_membertype ORDER BY membertype_name ASC')->queryAll();
+		return $result;
+	}
+	
 	/**
 	 * description: Get list pagination
 	 * Author: Ha Huu Don(donhh6551@seta-asia.com.vn)
      * Date: 21/01/2015
 	 */
-	public function listMemberAjax($page, $limit){
-		$total = $this->find()->count();
-		
-		if($page <= $total){
-			$result=Yii::$app->db->createCommand('SELECT * FROM '.$this->tableName().' limit '.$page.','.$limit.'')->queryAll();
-		    
-			return $result;
-		}
-	}
+	public function listMemberAjaxSearch($data=[], $limit, $page=NULL){
+		$member = $data['member'];
+		$status = $data['status'];
 	
+		if($member != NULL && $status != NULL){
+			 $sql = 'SELECT * FROM '.$this->tableName().' '
+					. 'INNER JOIN salon_membertype ON '.$this->tableName().'.salon_membertype_id = salon_membertype.salon_membertype_id'
+					 . ' WHERE salon_membertype.membertype_name = "'.$member.'" AND '.$this->tableName().'.status = "'.$status.'"'
+					 . '';
+			 
+		}elseif($member != NULL && $status == NULL){
+			$sql = 'SELECT * FROM '.$this->tableName().' '
+					. 'INNER JOIN salon_membertype ON '.$this->tableName().'.salon_membertype_id = salon_membertype.salon_membertype_id'
+					 . ' WHERE salon_membertype.membertype_name = "'.$member.'"'
+					 . '';
+	    }elseif($member == NULL && $status != NULL){
+			$sql = 'SELECT * FROM '.$this->tableName().' '
+					. 'INNER JOIN salon_membertype ON '.$this->tableName().'.salon_membertype_id = salon_membertype.salon_membertype_id'
+					 . ' WHERE '.$this->tableName().'.status = "'.$status.'"'
+					 . '';
+		}else{
+			$sql = 'SELECT * FROM '.$this->tableName().' '
+				. 'INNER JOIN salon_membertype ON '.$this->tableName().'.salon_membertype_id = salon_membertype.salon_membertype_id'
+				. '';
+		}
+		
+		$result = Yii::$app->db->createCommand($sql.' limit 0,'.$data['start'].'')->queryAll();
+
+		return $result;
+	}
+
 	/**
 	 * description: order by list member by ajax
 	 * Author: Ha Huu Don(donhh6551@seta-asia.com.vn)
@@ -136,8 +166,10 @@ class Member extends \yii\db\ActiveRecord
 	 */
 	public function orderByMember($data=[], $limit){
 		
-		$result=Yii::$app->db->createCommand('SELECT * FROM '.$this->tableName().' limit 0,'.$data['start'].'')->queryAll();
-		
+		//$result=Yii::$app->db->createCommand('SELECT * FROM '.$this->tableName().' limit 0,'.$data['start'].'')->queryAll();
+		$result = Yii::$app->db->createCommand('SELECT * FROM '.$this->tableName().' '
+				. 'INNER JOIN salon_membertype ON '.$this->tableName().'.salon_membertype_id = salon_membertype.salon_membertype_id'
+				. ' limit 0,'.$data['start'].'')->queryAll();
 		return $result;
 	}
 }
