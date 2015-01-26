@@ -38,6 +38,10 @@ use Yii;
  */
 class Salon extends \yii\db\ActiveRecord
 {
+	public $open_date_hour;
+	public $open_date_min;
+	public $close_date_hour;
+	public $close_date_min;
     /**
      * @inheritdoc
      */
@@ -52,16 +56,17 @@ class Salon extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['salon_group_id', 'pos_shop_cd', 'salon_name', 'salon_kana', 'salon_tel', 'zip_cd', 'jis_code', 'addr_ken', 'addr_shi', 'addr_cho', 'longitude', 'latitude', 'capacity'], 'required'],
-            [['salon_group_id', 'salon_type', 'gender_type', 'reservable_days', 'capacity', 'timelimit_atday', 'status', 'admin_id'], 'integer'],
-            [['longitude', 'latitude'], 'number'],
+            [['salon_group_id', 'pos_shop_cd', 'salon_name', 'salon_kana', 'salon_tel', 'zip_cd', 'jis_code', 'addr_ken', 'addr_shi', 'addr_cho', 'longitude', 'latitude', 'capacity'], 'required', 'message' => \Yii::t('app', 'validation required')],
+            [['salon_group_id', 'salon_type', 'gender_type', 'reservable_days', 'capacity', 'timelimit_atday', 'status', 'admin_id'], 'integer', 'message' => \Yii::t('app', 'validation integer')],
+            [['longitude', 'latitude'], 'number', 'message' => \Yii::t('app', 'validation number')],
             [['open_time', 'close_time', 'reg_datetime', 'upd_datetime'], 'safe'],
             [['memo'], 'string'],
-            [['pos_shop_cd'], 'string', 'max' => 6],
-            [['salon_name', 'salon_kana', 'addr_ken', 'addr_shi', 'addr_cho', 'addr_bldg', 'holiday_other', 'open_other'], 'string', 'max' => 255],
-            [['salon_tel'], 'string', 'max' => 12],
-            [['zip_cd'], 'string', 'max' => 8],
-            [['jis_code'], 'string', 'max' => 5]
+            [['pos_shop_cd'], 'string', 'max' => 6, 'tooLong' => \Yii::t('app', 'validation max string {number}', ['number' => 6])],
+            [['salon_name', 'salon_kana', 'addr_ken', 'addr_shi', 'addr_cho', 'addr_bldg', 'holiday_other', 'open_other'], 'string', 'max' => 255, 'tooLong' => \Yii::t('app', 'validation max string {number}', ['number' => 255])],
+            [['salon_tel'], 'string', 'max' => 12, 'tooLong' => \Yii::t('app', 'validation max string {number}', ['number' => 12])],
+            [['zip_cd'], 'string', 'max' => 8, 'tooLong' => \Yii::t('app', 'validation max string {number}', ['number' => 8])],
+            [['jis_code'], 'string', 'max' => 5, 'tooLong' => \Yii::t('app', 'validation max string {number}', ['number' => 5])],
+			[['close_time'], 'validateCloseDateField'],
         ];
     }
 
@@ -100,5 +105,11 @@ class Salon extends \yii\db\ActiveRecord
             'upd_datetime' => 'Upd Datetime',
             'memo' => 'Memo',
         ];
+    }
+	
+	 public function validateCloseDateField($attribute) {       
+		if($this->close_time < $this->open_time) {
+		 $this->addError($attribute, \Yii::t('app', 'validation open date greate than close date'));
+		} 
     }
 }

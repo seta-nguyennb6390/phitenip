@@ -9,6 +9,19 @@ $(function() {
     $('html,body').animate({ scrollTop: 0 }, 'slow');
     return false;
   });
+  
+    //add class for radio when click
+  $(".radio").click(function () {
+      var name = $(this).find('input[type=radio]').attr('name');
+      $('input[type=radio][name="'+ name +'"]').parent().removeClass('active');
+      $(this).addClass('active');
+  });
+  
+  //init radio checked
+  $(document).ready(function(){
+      $('.radio').has('>input[type=radio]:checked').addClass('active');
+  });
+
 });
 
 // ポップアップ｜カレンダー用（400×400）

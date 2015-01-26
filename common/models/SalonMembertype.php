@@ -10,7 +10,7 @@ use Yii;
  * @property integer $salon_membertype_id
  * @property integer $salon_id
  * @property string $membertype_name
- * @property string $descrption
+ * @property string $description
  * @property integer $gender_type
  * @property integer $use_limit
  * @property integer $holiday_type
@@ -45,7 +45,7 @@ class SalonMembertype extends \yii\db\ActiveRecord
         return [
             [['salon_id', 'membertype_name'], 'required'],
             [['salon_id', 'gender_type', 'use_limit', 'holiday_type', 'timelimit_flg', 'timelimit_atday', 'facility_flg', 'status', 'admin_id'], 'integer'],
-            [['descrption', 'memo'], 'string'],
+            [['description', 'memo'], 'string'],
             [['start_time', 'close_time', 'activate_date', 'disable_date', 'reg_datetime', 'upd_datetime'], 'safe'],
             [['membertype_name'], 'string', 'max' => 255]
         ];
@@ -60,7 +60,7 @@ class SalonMembertype extends \yii\db\ActiveRecord
             'salon_membertype_id' => 'Salon Membertype ID',
             'salon_id' => 'Salon ID',
             'membertype_name' => 'Membertype Name',
-            'descrption' => 'Descrption',
+            'description' => 'Description',
             'gender_type' => 'Gender Type',
             'use_limit' => 'Use Limit',
             'holiday_type' => 'Holiday Type',
@@ -78,4 +78,17 @@ class SalonMembertype extends \yii\db\ActiveRecord
             'memo' => 'Memo',
         ];
     }
+	
+	/*
+	* Get all salon membertype by salon id
+	* 
+	* @since : 21/01/2015
+	* @author Can Tuan Anh <anhct6285@seta-asia.com.vn>
+	*/
+	
+	public function  getAllSalonMembertypeBySalonId($salonId) {
+		return $this->find()
+                ->where(['salon_id' => $salonId, 'status' => 1])
+                ->all();
+	}
 }

@@ -11,7 +11,7 @@ use Yii;
  * @property integer $salon_id
  * @property integer $facility_id
  * @property string $salon_facility_name
- * @property string $descrption
+ * @property string $description
  * @property integer $order_no
  * @property integer $reserve_flg
  * @property integer $gender_flg
@@ -43,7 +43,7 @@ class SalonFacility extends \yii\db\ActiveRecord
         return [
             [['salon_id', 'facility_id', 'salon_facility_name'], 'required'],
             [['salon_id', 'facility_id', 'order_no', 'reserve_flg', 'gender_flg', 'time_flg', 'status', 'interval_minutes', 'admin_id'], 'integer'],
-            [['descrption', 'memo'], 'string'],
+            [['description', 'memo'], 'string'],
             [['activate_date', 'disable_date', 'reg_datetime', 'upd_datetime'], 'safe'],
             [['salon_facility_name'], 'string', 'max' => 255]
         ];
@@ -59,7 +59,7 @@ class SalonFacility extends \yii\db\ActiveRecord
             'salon_id' => 'Salon ID',
             'facility_id' => 'Facility ID',
             'salon_facility_name' => 'Salon Facility Name',
-            'descrption' => 'Descrption',
+            'description' => 'Description',
             'order_no' => 'Order No',
             'reserve_flg' => 'Reserve Flg',
             'gender_flg' => 'Gender Flg',
@@ -74,4 +74,20 @@ class SalonFacility extends \yii\db\ActiveRecord
             'memo' => 'Memo',
         ];
     }
+	
+	/*
+	* Get sumary salon facility by salon id
+	* 
+	* @since : 21/01/2015
+	* @author Can Tuan Anh <anhct6285@seta-asia.com.vn>
+	*/
+	
+	public function  getSummarySalonFacilityBySalonId($salonId) {
+		return (new \yii\db\Query())
+                ->select('COUNT(*) AS cnt, facility_id, salon_facility_name')
+                ->from('salon_facility')
+                ->where(['salon_id' => $salonId, 'status' => 1])
+                ->groupBy('facility_id')
+                ->all();
+	}
 }
